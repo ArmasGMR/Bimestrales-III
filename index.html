@@ -727,16 +727,13 @@ figure.cfig img{border:0; display:block; width:100%; height:auto; border-radius:
   --rust:#ffb68a; --rust-soft:rgba(255,160,110,.16);
   --img:.93; --mint:#aef6cf; --jade:#5fe6a0; --bone:#eafff2;
 }
-html{background:radial-gradient(ellipse at 20% 0%,#10234a,transparent 55%),radial-gradient(ellipse at 90% 100%,#241545,transparent 55%),#05061a; background-attachment:fixed; min-height:100%}
+html{background:#05061a}
+/* fondo de color en una capa fija del tamaño de la pantalla: no se estira con la página ni parpadea al hacer scroll */
+body::before{content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:radial-gradient(ellipse 90% 70% at 15% 0%,rgba(30,62,120,.55),transparent 70%),radial-gradient(ellipse 80% 70% at 95% 100%,rgba(70,40,130,.45),transparent 70%),#05061a}
 body{background:transparent; position:relative}
 ::selection{background:rgba(95,230,160,.35); color:#fff}
 :focus-visible{outline-color:var(--jade)}
-#scene{position:fixed; inset:0; width:100vw; height:100vh; display:block; z-index:-2}
-#veil{position:fixed; inset:0; z-index:-1; pointer-events:none;
-  background:radial-gradient(ellipse 80% 70% at 50% 35%, rgba(3,5,16,.10), rgba(3,5,16,.52) 100%)}
-html.no-gl{background:radial-gradient(ellipse at 20% 0%,#10234a,transparent 55%),radial-gradient(ellipse at 90% 100%,#241545,transparent 55%),#05061a}
-html.no-gl #scene{display:none}
-
 /* barra superior */
 .top{background:rgba(4,7,20,.58); border-bottom:1px solid var(--line); backdrop-filter:blur(16px) saturate(1.2)}
 .brand{background:linear-gradient(90deg,var(--mint),var(--bone) 60%,var(--jade)); -webkit-background-clip:text; background-clip:text; color:transparent; letter-spacing:-.01em}
@@ -893,7 +890,7 @@ a.chip:hover{border-color:var(--jade); color:var(--jade)}
 </style>
 <style id="glass-suave">
 /* Vidrio suave: mismos colores, paneles casi opacos, sin reflejos ni bordes de luz */
-:root{ --lg-blur:6px; --lg-sat:1.05; --lg-tint:rgba(12,20,38,.86); --lg-edge:rgba(174,246,207,.14) }
+:root{ --lg-blur:12px; --lg-sat:1.15; --lg-tint:rgba(12,20,38,.68); --lg-edge:rgba(174,246,207,.16) }
 .top,.subj,.res>article,.toc,.box,.caso,.drill,.src,.op,.ax,.dvc,.cite-row,.shelf,.figpanel,.tbl,.opt,.teacher,details.ojo,details.extra,.toc-mobile details,
 .prob,.fcol,.rh-stage,.feq,.sfig,.hand-fig,.px,.px-note,.tl-fig,.feat5>div,.verbs>div,.vs>div,.cause>div,.pnote,details.pastdays,.svgfig,figure.cfig,.box.nd,
 .pal-map,.pal-how,.pal-st,.day:not(.exam),.seg,.btn:not(.pri){
@@ -901,9 +898,9 @@ a.chip:hover{border-color:var(--jade); color:var(--jade)}
   -webkit-backdrop-filter:blur(var(--lg-blur)); backdrop-filter:blur(var(--lg-blur));
   box-shadow:0 10px 30px -22px rgba(0,0,0,.8);
 }
-.top{background-color:rgba(6,10,24,.9)}
+.top{background-color:rgba(6,10,24,.78)}
 .res>article{box-shadow:0 16px 40px -30px rgba(0,0,0,.9)}
-.box:hover,.caso:hover,.src:hover,.drill:hover,.prob:hover{background-color:rgba(18,30,52,.9)}
+.box:hover,.caso:hover,.src:hover,.drill:hover,.prob:hover{background-color:rgba(18,30,52,.78)}
 .subj:hover{transform:translateY(-2px)}
 .home h1{filter:none}
 </style>
