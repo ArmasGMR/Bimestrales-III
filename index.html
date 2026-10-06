@@ -1,4 +1,5 @@
 <!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<script>document.documentElement.setAttribute("data-theme","dark")</script>
 <title>Bimestrales III</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -453,7 +454,7 @@ mark.tm{background:var(--gold-soft); box-shadow:inset 0 -2px 0 var(--gold)}
 .pal-map{margin:0; overflow-x:auto}
 .pal-svg{display:block; width:100%; min-width:520px; height:auto}
 .pal-map figcaption{font-size:.85rem; color:var(--muted); margin-top:6px}
-.pal-map,.pal-how,.pal-st{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px 16px}
+.pal-map,.pal-how,.pal-st{background-color:var(--lg-tint,var(--surface)); border:1px solid var(--lg-edge,var(--line)); border-radius:14px; padding:14px 16px; -webkit-backdrop-filter:blur(var(--lg-blur,0)) saturate(var(--lg-sat,1)); backdrop-filter:blur(var(--lg-blur,0)) saturate(var(--lg-sat,1)); box-shadow:inset 0 1.5px 0 rgba(255,255,255,.3), 0 14px 40px -16px rgba(0,0,0,.75)}
 .pal-yard{fill:var(--rust-soft); stroke:var(--rust); stroke-dasharray:6 6; stroke-width:1.5}
 .pal-house{fill:var(--bg); stroke:var(--ink); stroke-width:3; opacity:.92}
 .pal-room{fill:none; stroke:var(--line); stroke-width:1.5}
@@ -461,8 +462,8 @@ mark.tm{background:var(--gold-soft); box-shadow:inset 0 -2px 0 var(--gold)}
 .pal-zl{font-family:var(--mono); font-size:12px; fill:var(--rust); letter-spacing:.06em}
 .pal-door{stroke:var(--rust); stroke-width:6; stroke-linecap:round}
 .pal-path{fill:none; stroke:var(--ink); stroke-width:1.5; stroke-dasharray:3 6; opacity:.55}
-.pal-pin circle{stroke:var(--surface); stroke-width:1.5; transition:r .15s}
-.pal-pin text{font-family:var(--display); font-weight:800; font-size:14px; text-anchor:middle; fill:var(--surface); pointer-events:none}
+.pal-pin circle{stroke:rgba(0,0,0,.35); stroke-width:1.5; transition:r .15s}
+.pal-pin text{font-family:var(--display); font-weight:800; font-size:14px; text-anchor:middle; fill:#08101c; pointer-events:none}
 .pal-pin:hover circle,.pal-pin:focus-visible circle{r:18}
 .pal-pin.ok circle{stroke:var(--ok); stroke-width:4} .pal-pin.no circle{stroke:var(--bad); stroke-width:4}
 .z-rom{--u:var(--rust); --us:var(--rust-soft)} .z-mod{--u:var(--hema); --us:var(--hema-soft)}
@@ -471,11 +472,11 @@ mark.tm{background:var(--gold-soft); box-shadow:inset 0 -2px 0 var(--gold)}
 .pal-how ol{margin:6px 0 12px; padding-left:20px; font-size:.93rem}
 .pal-how li{margin:4px 0}
 .pal-mode{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
-.pal-mode .btn[aria-pressed="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+.pal-mode .btn[aria-pressed="true"]{background-image:linear-gradient(135deg,var(--mint,var(--ink)),var(--jade,var(--ink))); color:#03140b; border-color:transparent}
 .pal{display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr)); gap:14px}
 .pal-st{border-top:3px solid var(--u); scroll-margin-top:90px}
 .pal-st header{display:flex; gap:12px; align-items:center}
-.pal-n{flex:none; width:34px; height:34px; border-radius:50%; background:var(--u); color:var(--surface); font-family:var(--display); font-weight:800; display:grid; place-items:center}
+.pal-n{flex:none; width:34px; height:34px; border-radius:50%; background:var(--u); color:#08101c; font-family:var(--display); font-weight:800; display:grid; place-items:center}
 .pal-st h3{font-size:1.15rem}
 .pal-z{font-family:var(--mono); font-size:.72rem; color:var(--u); letter-spacing:.04em; text-transform:uppercase}
 .pal-res{margin-left:auto; font-family:var(--mono); font-size:.75rem}
@@ -708,6 +709,206 @@ figure.cfig img{border:0; display:block; width:100%; height:auto; border-radius:
 .box.nd p{font-size:.92rem; margin:6px 0}
 .box.nd .tag{font-size:.78rem}
 </style>
+
+<style id="starfield-redesign">
+/* ===== Rediseño "Starfield": túnel de estrellas como fondo, paneles de cristal, acentos menta/jade ===== */
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#050714; --surface:rgba(9,15,30,.68); --sunk:rgba(22,36,48,.64);
+  --ink:#eafff2; --muted:#a3c2b3; --line:rgba(174,246,207,.18);
+  --hema:#c3b4ff; --hema-soft:rgba(150,125,255,.17);
+  --eosin:#ff9fc4; --eosin-soft:rgba(255,120,170,.16);
+  --nerv:#86e6ff; --nerv-soft:rgba(90,200,240,.16);
+  --ok:#5fe6a0; --ok-soft:rgba(95,230,160,.15);
+  --warn:#ffd27a; --warn-soft:rgba(255,200,100,.14);
+  --bad:#ff9c96; --bad-soft:rgba(255,110,100,.16);
+  --gold:#f4d283; --gold-soft:rgba(240,200,110,.15);
+  --green:#8fe8a8; --green-soft:rgba(110,230,150,.15);
+  --rust:#ffb68a; --rust-soft:rgba(255,160,110,.16);
+  --img:.93; --mint:#aef6cf; --jade:#5fe6a0; --bone:#eafff2;
+}
+html{background:radial-gradient(ellipse at 20% 0%,#10234a,transparent 55%),radial-gradient(ellipse at 90% 100%,#241545,transparent 55%),#05061a; background-attachment:fixed; min-height:100%}
+body{background:transparent; position:relative}
+::selection{background:rgba(95,230,160,.35); color:#fff}
+:focus-visible{outline-color:var(--jade)}
+#scene{position:fixed; inset:0; width:100vw; height:100vh; display:block; z-index:-2}
+#veil{position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:radial-gradient(ellipse 80% 70% at 50% 35%, rgba(3,5,16,.10), rgba(3,5,16,.52) 100%)}
+html.no-gl{background:radial-gradient(ellipse at 20% 0%,#10234a,transparent 55%),radial-gradient(ellipse at 90% 100%,#241545,transparent 55%),#05061a}
+html.no-gl #scene{display:none}
+
+/* barra superior */
+.top{background:rgba(4,7,20,.58); border-bottom:1px solid var(--line); backdrop-filter:blur(16px) saturate(1.2)}
+.brand{background:linear-gradient(90deg,var(--mint),var(--bone) 60%,var(--jade)); -webkit-background-clip:text; background-clip:text; color:transparent; letter-spacing:-.01em}
+.brand small{-webkit-text-fill-color:var(--muted)}
+.topnav a{transition:color .2s, background .2s, box-shadow .2s}
+.topnav a:hover{color:var(--ink); background:rgba(174,246,207,.08)}
+.topnav a[aria-current="page"]{background:linear-gradient(135deg,var(--mint),var(--jade)); color:#03140b; font-weight:700; box-shadow:0 0 18px rgba(95,230,160,.45)}
+
+/* inicio */
+.home h1{background:linear-gradient(100deg,var(--bone) 10%,var(--mint) 55%,var(--jade)); -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 0 24px rgba(95,230,160,.35))}
+.home .lede,.week>p,.shead .meta{text-shadow:0 1px 14px rgba(0,0,0,.85)}
+.week h2,.shead h1{text-shadow:0 2px 24px rgba(0,0,0,.8)}
+.subj{backdrop-filter:blur(14px) saturate(1.2); box-shadow:0 10px 40px -18px rgba(0,0,0,.8); transition:transform .2s, border-color .2s, box-shadow .2s}
+.subj:hover{border-color:var(--jade); box-shadow:0 0 0 1px rgba(95,230,160,.35), 0 14px 50px -12px rgba(95,230,160,.28)}
+.subj.empty{background:rgba(9,15,30,.35)}
+.count{background:rgba(255,159,196,.14); border:1px solid rgba(255,159,196,.3)}
+
+/* progreso y pestañas */
+.bar{background:rgba(255,255,255,.08)}
+.bar>i{background:linear-gradient(90deg,var(--jade),var(--mint)); box-shadow:0 0 12px rgba(95,230,160,.7)}
+.tabs{border-bottom-color:var(--line)}
+.tabs a{transition:color .2s}
+.tabs a:hover{color:var(--ink)}
+.tabs a[aria-current="page"]{border-color:var(--jade); text-shadow:0 0 14px rgba(95,230,160,.6)}
+
+/* resumen: columna de lectura en cristal */
+.res>article{background:rgba(5,9,22,.60); border:1px solid var(--line); border-radius:22px; padding:10px 32px 4px; backdrop-filter:blur(16px) saturate(1.15); box-shadow:0 20px 60px -30px rgba(0,0,0,.9)}
+.toc{background:rgba(5,9,22,.55); border:1px solid var(--line); border-radius:18px; padding:16px 14px; backdrop-filter:blur(14px)}
+.toc a:hover{color:var(--mint)}
+.unit{margin-bottom:44px}
+.uhead{border-top-width:3px; box-shadow:0 -10px 24px -16px var(--u)}
+.uhead h2{text-shadow:0 0 28px color-mix(in srgb,var(--u) 35%,transparent)}
+.hy{border:1px solid color-mix(in srgb,var(--u) 30%,transparent)}
+.box,.tbl,.caso,.drill,.figpanel,.src,.op,.ax,.dvc,.cite-row,.shelf{backdrop-filter:blur(8px)}
+.box,.caso,.drill,.src,.dvc,.op,.ax{box-shadow:0 8px 30px -20px rgba(0,0,0,.9)}
+.figure img,figure img{box-shadow:0 0 0 1px var(--line), 0 12px 40px -18px rgba(0,0,0,.9)}
+th{background:rgba(174,246,207,.07)}
+
+/* tarjetas, quiz, localizar, plan */
+.face{background:rgba(8,14,28,.86); box-shadow:0 18px 50px -24px rgba(0,0,0,.9), inset 0 0 0 1px rgba(174,246,207,.05)}
+.face.back{background:rgba(14,28,38,.9)}
+.seg{background:rgba(9,15,30,.6); backdrop-filter:blur(10px)}
+.seg button[aria-pressed="true"]{background:linear-gradient(135deg,var(--mint),var(--jade)); color:#03140b}
+.btn{background:rgba(9,15,30,.6); backdrop-filter:blur(8px); transition:border-color .2s, box-shadow .2s}
+.btn:hover{border-color:var(--jade); box-shadow:0 0 14px rgba(95,230,160,.25)}
+.btn.pri{background:linear-gradient(135deg,var(--mint),var(--jade)); color:#03140b; border-color:transparent}
+.opt{backdrop-filter:blur(8px); transition:border-color .2s, transform .15s}
+.opt:hover:not(:disabled){border-color:var(--jade); transform:translateX(2px)}
+.drill input{background:rgba(3,6,16,.7)}
+.day{backdrop-filter:blur(8px)}
+.day.today{box-shadow:0 0 0 3px rgba(255,159,196,.18), 0 0 30px -6px rgba(255,159,196,.35)}
+.day.exam{background:linear-gradient(135deg,#d9ffe9,#8ff0bd); color:#03140b; border-color:transparent}
+.day.exam .d,.day.exam .d b{color:#03140b}
+.day.exam.rel{background:linear-gradient(135deg,#ffe7a8,#f0c15f); color:#201400}
+.day.exam.log{background:linear-gradient(135deg,#d8ceff,#a592ff); color:#120a35}
+.day.exam.multi{background:linear-gradient(135deg,#d9ffe9,#8ff0bd)}
+.teacher{background:rgba(22,36,48,.6)}
+details.ojo,details.extra{backdrop-filter:blur(6px)}
+a.chip:hover{border-color:var(--jade); color:var(--jade)}
+@media (max-width:900px){ .res>article{padding:6px 18px 2px; border-radius:18px} }
+@media (max-width:620px){ .res>article{padding:4px 14px 0} }
+</style>
+
+<style id="liquid-glass">
+/* ===== Liquid Glass: solo cambia el material de los paneles ===== */
+:root{
+  --lg-blur:22px; --lg-sat:1.9;
+  --lg-tint:rgba(10,18,34,.38);
+  --lg-edge:rgba(255,255,255,.16);
+}
+.top,.subj,.res>article,.toc,.box,.caso,.drill,.src,.op,.ax,.dvc,.cite-row,.shelf,.figpanel,.tbl,.seg,.btn,.opt,.day,.teacher,details.ojo,details.extra,.toc-mobile details,.week .day{
+  background-color:var(--lg-tint);
+  background-image:
+    radial-gradient(240px circle at 28% -10%, rgba(255,255,255,.20), rgba(255,255,255,0) 65%),
+    linear-gradient(135deg, rgba(255,255,255,.11) 0%, rgba(255,255,255,.03) 38%, rgba(255,255,255,.015) 62%, rgba(255,255,255,.07) 100%);
+  -webkit-backdrop-filter:blur(var(--lg-blur)) saturate(var(--lg-sat)) brightness(1.06);
+  backdrop-filter:blur(var(--lg-blur)) saturate(var(--lg-sat)) brightness(1.06);
+  border-color:var(--lg-edge);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.42),
+    inset 1.5px 0 0 rgba(255,255,255,.16),
+    inset 0 -1px 0 rgba(255,255,255,.06),
+    inset 0 0 28px rgba(255,255,255,.045),
+    0 14px 40px -16px rgba(0,0,0,.75);
+}
+/* estados con color propio: conservan su fondo, solo ganan el borde de luz */
+.opt.right,.opt.wrong,.btn.pri,.seg button{background-image:none}
+.opt.right{background-color:var(--ok-soft)} .opt.wrong{background-color:var(--bad-soft)}
+.btn.pri{background-image:linear-gradient(135deg,var(--mint),var(--jade)); box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6), 0 0 18px rgba(95,230,160,.35)}
+.day.exam{background-image:none; box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55), 0 10px 34px -12px rgba(95,230,160,.45)}
+.day.exam.rel{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55), 0 10px 34px -12px rgba(240,193,95,.45)}
+.day.exam.log{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55), 0 10px 34px -12px rgba(165,146,255,.45)}
+.subj.empty{background-image:none; box-shadow:none; -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px)}
+.top{box-shadow:inset 0 -1px 0 rgba(255,255,255,.12), 0 10px 40px -20px rgba(0,0,0,.8)}
+.top{border-bottom-color:var(--lg-edge)}
+.btn,.seg{border-radius:999px}
+.btn.sm{border-radius:999px}
+
+/* brillo líquido al pasar el cursor y al presionar */
+.subj,.box,.caso,.btn,.opt,.day,.drill,.src{transition:transform .35s cubic-bezier(.2,.9,.3,1.3), box-shadow .3s, border-color .2s, background-color .3s}
+.box:hover,.caso:hover,.src:hover,.drill:hover{background-color:rgba(18,30,52,.42)}
+.btn:active,.opt:active:not(:disabled),.seg button:active{transform:scale(.95)}
+.subj:hover{transform:translateY(-3px) scale(1.012)}
+
+/* refracción en los bordes (solo navegadores Chromium; el resto conserva el desenfoque) */
+.lg-refract .top,.lg-refract .subj,.lg-refract .seg,.lg-refract .btn,.lg-refract .drill{
+  -webkit-backdrop-filter:url(#lg-refract) blur(14px) saturate(var(--lg-sat)) brightness(1.06);
+  backdrop-filter:url(#lg-refract) blur(14px) saturate(var(--lg-sat)) brightness(1.06);
+}
+
+@media (prefers-reduced-transparency: reduce){
+  :root{--lg-tint:rgba(8,14,28,.9)}
+  .top,.subj,.res>article,.toc,.box,.caso,.drill,.src,.op,.ax,.dvc,.cite-row,.shelf,.figpanel,.tbl,.seg,.btn,.opt,.day{-webkit-backdrop-filter:none; backdrop-filter:none}
+}
+@media (prefers-reduced-motion: reduce){ .subj,.box,.caso,.btn,.opt,.day,.drill,.src{transition:none} }
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="lg-refract" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.009 0.013" numOctaves="2" seed="7" result="n"/>
+    <feGaussianBlur in="n" stdDeviation="2" result="nb"/>
+    <feDisplacementMap in="SourceGraphic" in2="nb" scale="26" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+<style id="glass-extras">
+/* El mismo vidrio para lo que se agregó después: Literatura, Física y los parciales de Biología */
+.prob,.fcol,.rh-stage,.feq,.sfig,.hand-fig,.px,.px-note,.tl-fig,.feat5>div,.verbs>div,.vs>div,.cause>div,.pnote,details.pastdays,.svgfig,figure.cfig,.box.nd{
+  background-color:var(--lg-tint);
+  background-image:
+    radial-gradient(240px circle at 28% -10%, rgba(255,255,255,.20), rgba(255,255,255,0) 65%),
+    linear-gradient(135deg, rgba(255,255,255,.11) 0%, rgba(255,255,255,.03) 38%, rgba(255,255,255,.015) 62%, rgba(255,255,255,.07) 100%);
+  -webkit-backdrop-filter:blur(var(--lg-blur)) saturate(var(--lg-sat)) brightness(1.06);
+  backdrop-filter:blur(var(--lg-blur)) saturate(var(--lg-sat)) brightness(1.06);
+  border-color:var(--lg-edge);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.42), inset 1.5px 0 0 rgba(255,255,255,.16), inset 0 -1px 0 rgba(255,255,255,.06), 0 14px 40px -16px rgba(0,0,0,.75);
+}
+.prob{transition:transform .35s cubic-bezier(.2,.9,.3,1.3), box-shadow .3s, border-color .2s, background-color .3s}
+.prob:hover{background-color:rgba(18,30,52,.42)}
+.metric>div,.verbs>div{background-color:var(--us)}
+.pb-ans{background:rgba(95,230,160,.14); border:1px solid rgba(95,230,160,.28)}
+.px-a{background:rgba(95,230,160,.14); border:1px solid rgba(95,230,160,.24)}
+.px-bank{background:rgba(22,36,48,.6)}
+.cs-ans{background:rgba(22,36,48,.6)}
+.rh-out{background:rgba(22,36,48,.6)}
+.rh-plane{fill:rgba(174,246,207,.06); stroke:rgba(174,246,207,.18)}
+.day.exam.lit{background:linear-gradient(135deg,#ffe2cf,#ffb68a); color:#2a1205; box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55), 0 10px 34px -12px rgba(255,170,120,.45)}
+.day.exam.fis{background:linear-gradient(135deg,#d6f7ff,#86e6ff); color:#04202a; box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55), 0 10px 34px -12px rgba(120,220,255,.45)}
+.day.exam.lit .d,.day.exam.lit .d b{color:#2a1205} .day.exam.fis .d,.day.exam.fis .d b{color:#04202a}
+.day.exam .pmoved{background:rgba(0,0,0,.12)}
+.rh-dirs .btn[aria-pressed="true"]{background-image:linear-gradient(135deg,var(--mint),var(--jade)); color:#03140b; border-color:transparent; box-shadow:0 0 14px rgba(95,230,160,.35)}
+.pb-sol>summary,.pb-h h3{text-shadow:0 0 14px color-mix(in srgb,var(--u) 40%,transparent)}
+@media (prefers-reduced-transparency: reduce){
+  .prob,.fcol,.rh-stage,.feq,.sfig,.hand-fig,.px,.px-note,.tl-fig,.pnote,details.pastdays,.svgfig,figure.cfig{-webkit-backdrop-filter:none; backdrop-filter:none}
+}
+</style>
+<style id="glass-suave">
+/* Vidrio suave: mismos colores, paneles casi opacos, sin reflejos ni bordes de luz */
+:root{ --lg-blur:6px; --lg-sat:1.05; --lg-tint:rgba(12,20,38,.86); --lg-edge:rgba(174,246,207,.14) }
+.top,.subj,.res>article,.toc,.box,.caso,.drill,.src,.op,.ax,.dvc,.cite-row,.shelf,.figpanel,.tbl,.opt,.teacher,details.ojo,details.extra,.toc-mobile details,
+.prob,.fcol,.rh-stage,.feq,.sfig,.hand-fig,.px,.px-note,.tl-fig,.feat5>div,.verbs>div,.vs>div,.cause>div,.pnote,details.pastdays,.svgfig,figure.cfig,.box.nd,
+.pal-map,.pal-how,.pal-st,.day:not(.exam),.seg,.btn:not(.pri){
+  background-image:none;
+  -webkit-backdrop-filter:blur(var(--lg-blur)); backdrop-filter:blur(var(--lg-blur));
+  box-shadow:0 10px 30px -22px rgba(0,0,0,.8);
+}
+.top{background-color:rgba(6,10,24,.9)}
+.res>article{box-shadow:0 16px 40px -30px rgba(0,0,0,.9)}
+.box:hover,.caso:hover,.src:hover,.drill:hover,.prob:hover{background-color:rgba(18,30,52,.9)}
+.subj:hover{transform:translateY(-2px)}
+.home h1{filter:none}
+</style>
+
+
 
 <header class="top">
   <div class="wrap">
@@ -5963,3 +6164,7 @@ setInterval(function(){ countdown(); if (dkey(todayDate()) !== planDay) renderAl
 document.addEventListener("visibilitychange", function(){ if (!document.hidden && dkey(todayDate()) !== planDay) { countdown(); renderAllPlans(); } });
 })();
 </script>
+
+
+
+
