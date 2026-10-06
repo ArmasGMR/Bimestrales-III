@@ -2,6 +2,8 @@
 <html lang="es">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script>document.documentElement.setAttribute("data-theme","dark")</script>
+<canvas id="scene" aria-hidden="true"></canvas><div id="veil" aria-hidden="true"></div>
 <title>Bimestrales III</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -668,6 +670,196 @@ figure.cfig img{border:0; display:block; width:100%; height:auto; border-radius:
 .box.nd p{font-size:.92rem; margin:6px 0}
 .box.nd .tag{font-size:.78rem}
 </style>
+
+<style id="starfield-redesign">
+/* ===== Rediseño "Starfield": túnel de estrellas como fondo, paneles de cristal, acentos menta/jade ===== */
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#050714; --surface:rgba(9,15,30,.68); --sunk:rgba(22,36,48,.64);
+  --ink:#eafff2; --muted:#a3c2b3; --line:rgba(174,246,207,.18);
+  --hema:#c3b4ff; --hema-soft:rgba(150,125,255,.17);
+  --eosin:#ff9fc4; --eosin-soft:rgba(255,120,170,.16);
+  --nerv:#86e6ff; --nerv-soft:rgba(90,200,240,.16);
+  --ok:#5fe6a0; --ok-soft:rgba(95,230,160,.15);
+  --warn:#ffd27a; --warn-soft:rgba(255,200,100,.14);
+  --bad:#ff9c96; --bad-soft:rgba(255,110,100,.16);
+  --gold:#f4d283; --gold-soft:rgba(240,200,110,.15);
+  --green:#8fe8a8; --green-soft:rgba(110,230,150,.15);
+  --rust:#ffb68a; --rust-soft:rgba(255,160,110,.16);
+  --img:.93; --mint:#aef6cf; --jade:#5fe6a0; --bone:#eafff2;
+}
+html{background:#05061a}
+body{background:transparent; position:relative}
+::selection{background:rgba(95,230,160,.35); color:#fff}
+:focus-visible{outline-color:var(--jade)}
+#scene{position:fixed; inset:0; width:100vw; height:100vh; display:block; z-index:-2}
+#veil{position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:radial-gradient(ellipse 80% 70% at 50% 35%, rgba(3,5,16,.10), rgba(3,5,16,.52) 100%)}
+html.no-gl{background:radial-gradient(ellipse at 20% 0%,#10234a,transparent 55%),radial-gradient(ellipse at 90% 100%,#241545,transparent 55%),#05061a}
+html.no-gl #scene{display:none}
+
+/* barra superior */
+.top{background:rgba(4,7,20,.58); border-bottom:1px solid var(--line); backdrop-filter:blur(16px) saturate(1.2)}
+.brand{background:linear-gradient(90deg,var(--mint),var(--bone) 60%,var(--jade)); -webkit-background-clip:text; background-clip:text; color:transparent; letter-spacing:-.01em}
+.brand small{-webkit-text-fill-color:var(--muted)}
+.topnav a{transition:color .2s, background .2s, box-shadow .2s}
+.topnav a:hover{color:var(--ink); background:rgba(174,246,207,.08)}
+.topnav a[aria-current="page"]{background:linear-gradient(135deg,var(--mint),var(--jade)); color:#03140b; font-weight:700; box-shadow:0 0 18px rgba(95,230,160,.45)}
+
+/* inicio */
+.home h1{background:linear-gradient(100deg,var(--bone) 10%,var(--mint) 55%,var(--jade)); -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 0 24px rgba(95,230,160,.35))}
+.home .lede,.week>p,.shead .meta{text-shadow:0 1px 14px rgba(0,0,0,.85)}
+.week h2,.shead h1{text-shadow:0 2px 24px rgba(0,0,0,.8)}
+.subj{backdrop-filter:blur(14px) saturate(1.2); box-shadow:0 10px 40px -18px rgba(0,0,0,.8); transition:transform .2s, border-color .2s, box-shadow .2s}
+.subj:hover{border-color:var(--jade); box-shadow:0 0 0 1px rgba(95,230,160,.35), 0 14px 50px -12px rgba(95,230,160,.28)}
+.subj.empty{background:rgba(9,15,30,.35)}
+.count{background:rgba(255,159,196,.14); border:1px solid rgba(255,159,196,.3)}
+
+/* progreso y pestañas */
+.bar{background:rgba(255,255,255,.08)}
+.bar>i{background:linear-gradient(90deg,var(--jade),var(--mint)); box-shadow:0 0 12px rgba(95,230,160,.7)}
+.tabs{border-bottom-color:var(--line)}
+.tabs a{transition:color .2s}
+.tabs a:hover{color:var(--ink)}
+.tabs a[aria-current="page"]{border-color:var(--jade); text-shadow:0 0 14px rgba(95,230,160,.6)}
+
+/* resumen: columna de lectura en cristal */
+.res>article{background:rgba(5,9,22,.60); border:1px solid var(--line); border-radius:22px; padding:10px 32px 4px; backdrop-filter:blur(16px) saturate(1.15); box-shadow:0 20px 60px -30px rgba(0,0,0,.9)}
+.toc{background:rgba(5,9,22,.55); border:1px solid var(--line); border-radius:18px; padding:16px 14px; backdrop-filter:blur(14px)}
+.toc a:hover{color:var(--mint)}
+.unit{margin-bottom:44px}
+.uhead{border-top-width:3px; box-shadow:0 -10px 24px -16px var(--u)}
+.uhead h2{text-shadow:0 0 28px color-mix(in srgb,var(--u) 35%,transparent)}
+.hy{border:1px solid color-mix(in srgb,var(--u) 30%,transparent)}
+.box,.tbl,.caso,.drill,.figpanel,.src,.op,.ax,.dvc,.cite-row,.shelf{backdrop-filter:blur(8px)}
+.box,.caso,.drill,.src,.dvc,.op,.ax{box-shadow:0 8px 30px -20px rgba(0,0,0,.9)}
+.figure img,figure img{box-shadow:0 0 0 1px var(--line), 0 12px 40px -18px rgba(0,0,0,.9)}
+th{background:rgba(174,246,207,.07)}
+
+/* tarjetas, quiz, localizar, plan */
+.face{background:rgba(8,14,28,.86); box-shadow:0 18px 50px -24px rgba(0,0,0,.9), inset 0 0 0 1px rgba(174,246,207,.05)}
+.face.back{background:rgba(14,28,38,.9)}
+.seg{background:rgba(9,15,30,.6); backdrop-filter:blur(10px)}
+.seg button[aria-pressed="true"]{background:linear-gradient(135deg,var(--mint),var(--jade)); color:#03140b}
+.btn{background:rgba(9,15,30,.6); backdrop-filter:blur(8px); transition:border-color .2s, box-shadow .2s}
+.btn:hover{border-color:var(--jade); box-shadow:0 0 14px rgba(95,230,160,.25)}
+.btn.pri{background:linear-gradient(135deg,var(--mint),var(--jade)); color:#03140b; border-color:transparent}
+.opt{backdrop-filter:blur(8px); transition:border-color .2s, transform .15s}
+.opt:hover:not(:disabled){border-color:var(--jade); transform:translateX(2px)}
+.drill input{background:rgba(3,6,16,.7)}
+.day{backdrop-filter:blur(8px)}
+.day.today{box-shadow:0 0 0 3px rgba(255,159,196,.18), 0 0 30px -6px rgba(255,159,196,.35)}
+.day.exam{background:linear-gradient(135deg,#d9ffe9,#8ff0bd); color:#03140b; border-color:transparent}
+.day.exam .d,.day.exam .d b{color:#03140b}
+.day.exam.rel{background:linear-gradient(135deg,#ffe7a8,#f0c15f); color:#201400}
+.day.exam.log{background:linear-gradient(135deg,#d8ceff,#a592ff); color:#120a35}
+.day.exam.multi{background:linear-gradient(135deg,#d9ffe9,#8ff0bd)}
+.teacher{background:rgba(22,36,48,.6)}
+details.ojo,details.extra{backdrop-filter:blur(6px)}
+a.chip:hover{border-color:var(--jade); color:var(--jade)}
+@media (max-width:900px){ .res>article{padding:6px 18px 2px; border-radius:18px} }
+@media (max-width:620px){ .res>article{padding:4px 14px 0} }
+</style>
+
+<style id="liquid-glass">
+/* ===== Liquid Glass: solo cambia el material de los paneles ===== */
+:root{
+  --lg-blur:22px; --lg-sat:1.9;
+  --lg-tint:rgba(10,18,34,.38);
+  --lg-edge:rgba(255,255,255,.16);
+}
+.top,.subj,.res>article,.toc,.box,.caso,.drill,.src,.op,.ax,.dvc,.cite-row,.shelf,.figpanel,.tbl,.seg,.btn,.opt,.day,.teacher,details.ojo,details.extra,.toc-mobile details,.week .day{
+  background-color:var(--lg-tint);
+  background-image:
+    radial-gradient(240px circle at var(--mx,28%) var(--my,-10%), rgba(255,255,255,.20), rgba(255,255,255,0) 65%),
+    linear-gradient(135deg, rgba(255,255,255,.11) 0%, rgba(255,255,255,.03) 38%, rgba(255,255,255,.015) 62%, rgba(255,255,255,.07) 100%);
+  -webkit-backdrop-filter:blur(var(--lg-blur)) saturate(var(--lg-sat)) brightness(1.06);
+  backdrop-filter:blur(var(--lg-blur)) saturate(var(--lg-sat)) brightness(1.06);
+  border-color:var(--lg-edge);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.42),
+    inset 1.5px 0 0 rgba(255,255,255,.16),
+    inset 0 -1px 0 rgba(255,255,255,.06),
+    inset 0 0 28px rgba(255,255,255,.045),
+    0 14px 40px -16px rgba(0,0,0,.75);
+}
+/* estados con color propio: conservan su fondo, solo ganan el borde de luz */
+.opt.right,.opt.wrong,.btn.pri,.seg button{background-image:none}
+.opt.right{background-color:var(--ok-soft)} .opt.wrong{background-color:var(--bad-soft)}
+.btn.pri{background-image:linear-gradient(135deg,var(--mint),var(--jade)); box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6), 0 0 18px rgba(95,230,160,.35)}
+.day.exam{background-image:none; box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55), 0 10px 34px -12px rgba(95,230,160,.45)}
+.day.exam.rel{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55), 0 10px 34px -12px rgba(240,193,95,.45)}
+.day.exam.log{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55), 0 10px 34px -12px rgba(165,146,255,.45)}
+.subj.empty{background-image:none; box-shadow:none; -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px)}
+.top{box-shadow:inset 0 -1px 0 rgba(255,255,255,.12), 0 10px 40px -20px rgba(0,0,0,.8)}
+.top{border-bottom-color:var(--lg-edge)}
+.btn,.seg{border-radius:999px}
+.btn.sm{border-radius:999px}
+
+/* brillo líquido al pasar el cursor y al presionar */
+.subj,.box,.caso,.btn,.opt,.day,.drill,.src{transition:transform .35s cubic-bezier(.2,.9,.3,1.3), box-shadow .3s, border-color .2s, background-color .3s}
+.box:hover,.caso:hover,.src:hover,.drill:hover{background-color:rgba(18,30,52,.42)}
+.btn:active,.opt:active:not(:disabled),.seg button:active{transform:scale(.95)}
+.subj:hover{transform:translateY(-3px) scale(1.012)}
+
+/* refracción en los bordes (solo navegadores Chromium; el resto conserva el desenfoque) */
+.lg-refract .top,.lg-refract .subj,.lg-refract .seg,.lg-refract .btn,.lg-refract .drill{
+  -webkit-backdrop-filter:url(#lg-refract) blur(14px) saturate(var(--lg-sat)) brightness(1.06);
+  backdrop-filter:url(#lg-refract) blur(14px) saturate(var(--lg-sat)) brightness(1.06);
+}
+
+@media (prefers-reduced-transparency: reduce){
+  :root{--lg-tint:rgba(8,14,28,.9)}
+  .top,.subj,.res>article,.toc,.box,.caso,.drill,.src,.op,.ax,.dvc,.cite-row,.shelf,.figpanel,.tbl,.seg,.btn,.opt,.day{-webkit-backdrop-filter:none; backdrop-filter:none}
+}
+@media (prefers-reduced-motion: reduce){ .subj,.box,.caso,.btn,.opt,.day,.drill,.src{transition:none} }
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="lg-refract" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.009 0.013" numOctaves="2" seed="7" result="n"/>
+    <feGaussianBlur in="n" stdDeviation="2" result="nb"/>
+    <feDisplacementMap in="SourceGraphic" in2="nb" scale="26" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+<style id="glass-extras">
+/* El mismo vidrio para lo que se agregó después: Literatura, Física y los parciales de Biología */
+.prob,.fcol,.rh-stage,.feq,.sfig,.hand-fig,.px,.px-note,.tl-fig,.feat5>div,.verbs>div,.vs>div,.cause>div,.pnote,details.pastdays,.svgfig,figure.cfig,.box.nd{
+  background-color:var(--lg-tint);
+  background-image:
+    radial-gradient(240px circle at var(--mx,28%) var(--my,-10%), rgba(255,255,255,.20), rgba(255,255,255,0) 65%),
+    linear-gradient(135deg, rgba(255,255,255,.11) 0%, rgba(255,255,255,.03) 38%, rgba(255,255,255,.015) 62%, rgba(255,255,255,.07) 100%);
+  -webkit-backdrop-filter:blur(var(--lg-blur)) saturate(var(--lg-sat)) brightness(1.06);
+  backdrop-filter:blur(var(--lg-blur)) saturate(var(--lg-sat)) brightness(1.06);
+  border-color:var(--lg-edge);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.42), inset 1.5px 0 0 rgba(255,255,255,.16), inset 0 -1px 0 rgba(255,255,255,.06), 0 14px 40px -16px rgba(0,0,0,.75);
+}
+.prob{transition:transform .35s cubic-bezier(.2,.9,.3,1.3), box-shadow .3s, border-color .2s, background-color .3s}
+.prob:hover{background-color:rgba(18,30,52,.42)}
+.metric>div,.verbs>div{background-color:var(--us)}
+.pb-ans{background:rgba(95,230,160,.14); border:1px solid rgba(95,230,160,.28)}
+.px-a{background:rgba(95,230,160,.14); border:1px solid rgba(95,230,160,.24)}
+.px-bank{background:rgba(22,36,48,.6)}
+.cs-ans{background:rgba(22,36,48,.6)}
+.rh-out{background:rgba(22,36,48,.6)}
+.rh-plane{fill:rgba(174,246,207,.06); stroke:rgba(174,246,207,.18)}
+.day.exam.lit{background:linear-gradient(135deg,#ffe2cf,#ffb68a); color:#2a1205; box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55), 0 10px 34px -12px rgba(255,170,120,.45)}
+.day.exam.fis{background:linear-gradient(135deg,#d6f7ff,#86e6ff); color:#04202a; box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55), 0 10px 34px -12px rgba(120,220,255,.45)}
+.day.exam.lit .d,.day.exam.lit .d b{color:#2a1205} .day.exam.fis .d,.day.exam.fis .d b{color:#04202a}
+.day.exam .pmoved{background:rgba(0,0,0,.12)}
+.rh-dirs .btn[aria-pressed="true"]{background-image:linear-gradient(135deg,var(--mint),var(--jade)); color:#03140b; border-color:transparent; box-shadow:0 0 14px rgba(95,230,160,.35)}
+.pb-sol>summary,.pb-h h3{text-shadow:0 0 14px color-mix(in srgb,var(--u) 40%,transparent)}
+@media (prefers-reduced-transparency: reduce){
+  .prob,.fcol,.rh-stage,.feq,.sfig,.hand-fig,.px,.px-note,.tl-fig,.pnote,details.pastdays,.svgfig,figure.cfig{-webkit-backdrop-filter:none; backdrop-filter:none}
+}
+</style>
+<script>
+/* Liquid glass: el brillo también sigue al cursor en las secciones nuevas */
+document.addEventListener("pointermove", function (e) {
+  var el = e.target.closest && e.target.closest(".prob,.fcol,.px,.rh-stage,.sfig,.tl-fig,.box.nd");
+  if (!el) return;
+  var r = el.getBoundingClientRect(); el.style.setProperty("--mx", (e.clientX - r.left) + "px"); el.style.setProperty("--my", (e.clientY - r.top) + "px");
+}, { passive: true });
+</script>
 
 <header class="top">
   <div class="wrap">
@@ -5747,5 +5939,274 @@ if (!location.hash && S.last) { try { history.replaceState(null, "", "#" + S.las
 route();
 setInterval(function(){ countdown(); if (dkey(todayDate()) !== planDay) renderAllPlans(); }, 60000);
 document.addEventListener("visibilitychange", function(){ if (!document.hidden && dkey(todayDate()) !== planDay) { countdown(); renderAllPlans(); } });
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.143.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.143.0/examples/js/shaders/CopyShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.143.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.143.0/examples/js/shaders/GammaCorrectionShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.143.0/examples/js/postprocessing/EffectComposer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.143.0/examples/js/postprocessing/MaskPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.143.0/examples/js/postprocessing/ShaderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.143.0/examples/js/postprocessing/RenderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.143.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+<script>
+/* Fondo: Starfield Close (Three.js r143, WebGL1Renderer + 3 composers + FinalPass) */
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  if (!window.THREE || !THREE.EffectComposer || !THREE.UnrealBloomPass || !THREE.ShaderPass) { root.classList.add("no-gl"); return; }
+  try { init(); } catch (e) { console.warn("Starfield no disponible", e); root.classList.add("no-gl"); }
+
+  function init() {
+    var canvas = document.getElementById("scene");
+    var CONFIG = {
+      bgColor: "#0a0a24", flameColor: "#aee9ff", flameColor2: "#c79bff", flameAmt: 0.2,
+      colorA: "#aef6cf", colorB: "#5fe6a0", colorC: "#eafff2",
+      opacity: 2, pointSize: 50, brightness: 1.85, drift: 2.35, twinkle: 1, spin: 0.03,
+      repelRadius: 5, repelStrength: 0.35, scrollPush: 8, scrollDrift: 6, scrollSpin: 0.1, parallax: 0.6
+    };
+    var LAYERS = { NONE: 0, TORUS_SCENE: 1, BLOOM_SCENE: 2, ENTIRE_SCENE: 3 };
+    function hexToVec3(hex) { var n = parseInt(hex.slice(1), 16); return new THREE.Vector3(((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255); }
+    var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+    var PR = Math.min(window.devicePixelRatio || 1, 2);
+
+    var renderer = new THREE.WebGL1Renderer({ canvas: canvas, antialias: true });
+    renderer.setPixelRatio(PR);
+    renderer.setSize(innerWidth, innerHeight, false);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.VSMShadowMap;
+
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x000000);
+    scene.fog = new THREE.Fog(0x000000, 0, 15);
+
+    var camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 80);
+    camera.position.set(0, 0, 5);
+    camera.layers.enable(LAYERS.TORUS_SCENE);
+    camera.layers.enable(LAYERS.BLOOM_SCENE);
+    camera.layers.enable(LAYERS.ENTIRE_SCENE);
+    scene.add(camera);
+
+    /* ---- postprocesado ---- */
+    var renderScene = new THREE.RenderPass(scene, camera);
+    var W = innerWidth, H = innerHeight;
+
+    var torusComposer = new THREE.EffectComposer(renderer);
+    torusComposer.renderToScreen = false;
+    torusComposer.addPass(renderScene);
+    torusComposer.addPass(new THREE.ShaderPass(THREE.GammaCorrectionShader));
+    torusComposer.addPass(new THREE.UnrealBloomPass(new THREE.Vector2(W, H), 0.22, 0.2, 0));
+    torusComposer.addPass(new THREE.ShaderPass(THREE.CopyShader));
+
+    var bloomComposer = new THREE.EffectComposer(renderer);
+    bloomComposer.renderToScreen = false;
+    bloomComposer.addPass(renderScene);
+    bloomComposer.addPass(new THREE.UnrealBloomPass(new THREE.Vector2(W, H), 0.4, 0.55, 0));
+    bloomComposer.addPass(new THREE.ShaderPass(THREE.GammaCorrectionShader));
+
+    var FinalShader = {
+      uniforms: {
+        iTime: { value: 0 }, tDiffuse: { value: null }, torusTexture: { value: null }, bloomTexture: { value: null }, haloTexture: { value: null },
+        uBg: { value: hexToVec3(CONFIG.bgColor) }, uFlameA: { value: hexToVec3(CONFIG.flameColor) },
+        uFlameB: { value: hexToVec3(CONFIG.flameColor2) }, uFlameAmt: { value: CONFIG.flameAmt }
+      },
+      vertexShader: "varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position, 1.0); }",
+      fragmentShader: [
+        "uniform float iTime; uniform sampler2D tDiffuse; uniform sampler2D bloomTexture; uniform sampler2D torusTexture; uniform sampler2D haloTexture;",
+        "uniform vec3 uBg; uniform vec3 uFlameA; uniform vec3 uFlameB; uniform float uFlameAmt;",
+        "varying vec2 vUv;",
+        "vec3 warp3d(vec3 pos, float t){ float curv=.8,a=1.9,b=0.7; pos*=2.;",
+        "  pos.x+=curv*sin(t+a*pos.y)+t*b; pos.y+=curv*cos(t+a*pos.x);",
+        "  pos.y+=curv*sin(t+a*pos.z)+t*b; pos.z+=curv*cos(t+a*pos.y);",
+        "  pos.z+=curv*sin(t+a*pos.x)+t*b; pos.x+=curv*cos(t+a*pos.z);",
+        "  return 0.5+0.5*cos(pos.xyz+vec3(1,2,4)); }",
+        "void main(){",
+        "  vec2 uv = 2.*vUv - 1.;",
+        "  vec3 w = pow(warp3d(vec3(uv.x, sin(uv.y), uv.y), iTime*1.5), vec3(1.5));",
+        "  vec3 flame = 1.5*uFlameA*w.x; flame*=w.y; flame += uFlameB*w.z;",
+        "  flame *= smoothstep(0.25, 1., abs(uv.y));",
+        "  float md = smoothstep(-0.7, 1., -uv.y*uv.x); flame *= md*md;",
+        "  vec3 bg = uBg * (1.0 - 0.4 * length(uv));",
+        "  vec3 halo = texture2D(haloTexture, vUv).xyz;",
+        "  gl_FragColor = vec4(bg + flame*uFlameAmt + texture2D(bloomTexture, vUv).xyz + texture2D(torusTexture, vUv).xyz + texture2D(tDiffuse, vUv).xyz + halo, 1.);",
+        "}"
+      ].join("\n")
+    };
+    var finalPass = new THREE.ShaderPass(new THREE.ShaderMaterial(FinalShader), "tDiffuse");
+    finalPass.needsSwap = true;
+    var finalComposer = new THREE.EffectComposer(renderer);
+    finalComposer.addPass(renderScene);
+    finalComposer.addPass(finalPass);
+    finalPass.uniforms.bloomTexture.value = bloomComposer.renderTarget1.texture;
+    finalPass.uniforms.torusTexture.value = torusComposer.renderTarget1.texture;
+
+    /* ---- estrellas ---- */
+    var count = 4200, depth = 30;
+    var positions = new Float32Array(count * 3), palette = new Float32Array(count),
+        bright = new Float32Array(count), scales = new Float32Array(count), phases = new Float32Array(count);
+    for (var i = 0; i < count; i++) {
+      var i3 = i * 3;
+      positions[i3] = (Math.random() - 0.5) * 24;
+      positions[i3 + 1] = (Math.random() - 0.5) * 16;
+      positions[i3 + 2] = (Math.random() - 0.5) * 30;
+      palette[i] = Math.floor(Math.random() * 3);
+      bright[i] = 0.7 + Math.random() * 0.6;
+      scales[i] = 0.5 + Math.pow(Math.random(), 1.4) * 2.5;
+      phases[i] = Math.random();
+    }
+    var geometry = new THREE.BufferGeometry();
+    geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+    geometry.setAttribute("aScale", new THREE.Float32BufferAttribute(scales, 1));
+    geometry.setAttribute("aPhase", new THREE.Float32BufferAttribute(phases, 1));
+    geometry.setAttribute("aPalette", new THREE.Float32BufferAttribute(palette, 1));
+    geometry.setAttribute("aBright", new THREE.Float32BufferAttribute(bright, 1));
+
+    var material = new THREE.ShaderMaterial({
+      transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+      uniforms: {
+        uTime: { value: 0 }, uSize: { value: CONFIG.pointSize }, uOpacity: { value: 0 }, uDrift: { value: 0 }, uDepth: { value: depth },
+        uTwinkle: { value: CONFIG.twinkle }, uCursor: { value: new THREE.Vector3() }, uRepelRadius: { value: CONFIG.repelRadius },
+        uRepelStrength: { value: CONFIG.repelStrength }, uActivity: { value: 0 },
+        uColorA: { value: hexToVec3(CONFIG.colorA) }, uColorB: { value: hexToVec3(CONFIG.colorB) }, uColorC: { value: hexToVec3(CONFIG.colorC) },
+        uBrightness: { value: CONFIG.brightness }
+      },
+      vertexShader: [
+        "uniform float uTime; uniform float uSize; uniform float uDrift; uniform float uDepth; uniform float uTwinkle;",
+        "uniform vec3 uCursor; uniform float uRepelRadius; uniform float uRepelStrength; uniform float uActivity;",
+        "uniform vec3 uColorA; uniform vec3 uColorB; uniform vec3 uColorC;",
+        "attribute float aScale; attribute float aPhase; attribute float aPalette; attribute float aBright;",
+        "varying vec3 vColor; varying float vTwinkle;",
+        "void main() {",
+        "  vec3 pos = position;",
+        "  pos.z = mod(pos.z + uDrift + (uDepth * 0.5), uDepth) - (uDepth * 0.5);",
+        "  float tw = sin(uTime * 1.6 + aPhase * 6.2831);",
+        "  vTwinkle = (1.0 - uTwinkle) + uTwinkle * (0.55 + 0.45 * tw);",
+        "  vec4 modelPosition = modelMatrix * vec4(pos, 1.0);",
+        "  vec3 toParticle = modelPosition.xyz - uCursor;",
+        "  float dist = length(toParticle);",
+        "  float falloff = smoothstep(uRepelRadius, 0.0, dist);",
+        "  modelPosition.xyz += normalize(toParticle + vec3(0.0001)) * falloff * uRepelStrength * uActivity;",
+        "  vec4 viewPosition = viewMatrix * modelPosition;",
+        "  gl_Position = projectionMatrix * viewPosition;",
+        "  gl_PointSize = uSize * aScale;",
+        "  gl_PointSize *= (1.0 / -viewPosition.z);",
+        "  vec3 base = aPalette < 0.5 ? uColorA : (aPalette < 1.5 ? uColorB : uColorC);",
+        "  vColor = base * aBright;",
+        "}"
+      ].join("\n"),
+      fragmentShader: [
+        "uniform float uOpacity; uniform float uBrightness;",
+        "varying vec3 vColor; varying float vTwinkle;",
+        "void main() {",
+        "  vec2 uv = gl_PointCoord - 0.5;",
+        "  float d = length(uv);",
+        "  if (d > 0.5) discard;",
+        "  float strength = pow(1.0 - d * 2.0, 4.0);",
+        "  vec3 color = mix(vec3(0.0), vColor, strength);",
+        "  gl_FragColor = vec4(color * uBrightness, strength * uOpacity * vTwinkle);",
+        "}"
+      ].join("\n")
+    });
+    var points = new THREE.Points(geometry, material);
+    points.layers.enable(LAYERS.ENTIRE_SCENE);
+    var group = new THREE.Group();
+    group.add(points);
+    scene.add(group);
+
+    /* ---- puntero ---- */
+    var POINTER = { ndc: { x: 0, y: 0 }, active: false, lastMove: 0, world: new THREE.Vector3(), activity: 0 };
+    var tmpV = new THREE.Vector3(), tmpT = new THREE.Vector3();
+    window.addEventListener("mousemove", function (e) {
+      POINTER.ndc.x = (e.clientX / innerWidth) * 2 - 1;
+      POINTER.ndc.y = -((e.clientY / innerHeight) * 2 - 1);
+      POINTER.active = true; POINTER.lastMove = performance.now();
+    }, { passive: true });
+    document.addEventListener("mouseout", function (e) { if (!e.relatedTarget) POINTER.active = false; });
+    function updatePointer() {
+      var ok = false;
+      if (POINTER.active) {
+        tmpV.set(POINTER.ndc.x, POINTER.ndc.y, 0.5).unproject(camera);
+        var dir = tmpV.sub(camera.position).normalize();
+        if (Math.abs(dir.z) > 1e-4) {
+          var t = -camera.position.z / dir.z;
+          if (t > 0 && isFinite(t)) { tmpT.copy(camera.position).addScaledVector(dir, t); ok = true; }
+        }
+      }
+      if (!ok) tmpT.set(0, 0, 0);
+      POINTER.world.lerp(tmpT, 0.12);
+      var idle = (performance.now() - POINTER.lastMove) / 1000;
+      var want = (POINTER.active && idle < 3) ? 1 : 0;
+      POINTER.activity += (want - POINTER.activity) * 0.06;
+      material.uniforms.uCursor.value.copy(POINTER.world);
+      material.uniforms.uActivity.value = POINTER.activity;
+    }
+
+    /* ---- scroll (doble amortiguado) ---- */
+    var scrollTarget = 0, scrollSmooth = 0, scrollCurrent = 0, mouseSmooth = { x: 0, y: 0 };
+    function readScroll() {
+      var max = document.documentElement.scrollHeight - innerHeight;
+      scrollTarget = max > 0 ? clamp(window.scrollY / max, 0, 1) : 0;
+    }
+    window.addEventListener("scroll", readScroll, { passive: true });
+    window.addEventListener("hashchange", function () { setTimeout(readScroll, 60); });
+    readScroll();
+
+    var t0 = performance.now() / 1000, appearStart = performance.now();
+    function update(scroll, m) {
+      var t = performance.now() / 1000, dt = Math.min(0.05, t - t0); t0 = t;
+      var u = material.uniforms;
+      u.uTime.value = t;
+      u.uDrift.value += dt * (CONFIG.drift + scroll * CONFIG.scrollDrift);
+      camera.position.set(m.x * CONFIG.parallax, m.y * CONFIG.parallax, 5 - scroll * CONFIG.scrollPush);
+      camera.lookAt(m.x * CONFIG.parallax, m.y * CONFIG.parallax, -10);
+      var fade = clamp((performance.now() - appearStart - 300) / 1400, 0, 1);
+      u.uOpacity.value = fade * CONFIG.opacity;
+      group.rotation.z += dt * (CONFIG.spin + scroll * CONFIG.scrollSpin);
+    }
+
+    function frame() {
+      requestAnimationFrame(frame);
+      finalPass.uniforms.iTime.value = performance.now() / 1000;
+      scrollSmooth += (scrollTarget - scrollSmooth) * 0.10;
+      scrollCurrent += (scrollSmooth - scrollCurrent) * 0.06;
+      mouseSmooth.x += (POINTER.ndc.x - mouseSmooth.x) * 0.06;
+      mouseSmooth.y += (POINTER.ndc.y - mouseSmooth.y) * 0.06;
+      updatePointer();
+      update(scrollCurrent, mouseSmooth);
+      camera.layers.set(LAYERS.TORUS_SCENE); torusComposer.render();
+      camera.layers.set(LAYERS.BLOOM_SCENE); bloomComposer.render();
+      camera.layers.set(LAYERS.ENTIRE_SCENE); finalComposer.render();
+    }
+
+    window.addEventListener("resize", function () {
+      var w = innerWidth, h = innerHeight;
+      renderer.setPixelRatio(PR); renderer.setSize(w, h, false);
+      camera.aspect = w / h; camera.updateProjectionMatrix();
+      [torusComposer, bloomComposer, finalComposer].forEach(function (c) { c.setPixelRatio(PR); c.setSize(w, h); });
+      readScroll();
+    });
+    frame();
+  }
+})();
+</script>
+
+<script>
+/* Liquid Glass: destello especular que sigue al cursor + refracción en Chromium */
+(function () {
+  var ua = navigator.userAgent;
+  if (/Chrome\/|Chromium\/|Edg\//.test(ua) && !/OPR\/|Firefox\//.test(ua)) document.documentElement.classList.add("lg-refract");
+  var SEL = ".top,.subj,.res>article,.toc,.box,.caso,.drill,.src,.op,.ax,.dvc,.cite-row,.shelf,.figpanel,.tbl,.seg,.btn,.opt,.day,.teacher,details.ojo,details.extra";
+  var cur = null, pending = null, raf = 0;
+  function apply() {
+    raf = 0; if (!pending) return;
+    var e = pending, el = e.target.closest ? e.target.closest(SEL) : null;
+    if (cur && cur !== el) { cur.style.removeProperty("--mx"); cur.style.removeProperty("--my"); }
+    cur = el;
+    if (el) { var r = el.getBoundingClientRect(); el.style.setProperty("--mx", (e.clientX - r.left) + "px"); el.style.setProperty("--my", (e.clientY - r.top) + "px"); }
+  }
+  document.addEventListener("pointermove", function (e) { pending = e; if (!raf) raf = requestAnimationFrame(apply); }, { passive: true });
+  document.addEventListener("pointerleave", function () { if (cur) { cur.style.removeProperty("--mx"); cur.style.removeProperty("--my"); cur = null; } });
 })();
 </script>
