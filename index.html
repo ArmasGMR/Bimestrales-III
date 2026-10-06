@@ -1,7 +1,4 @@
-<!doctype html>
-<html lang="es">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <script>document.documentElement.setAttribute("data-theme","dark")</script>
 <canvas id="scene" aria-hidden="true"></canvas><div id="veil" aria-hidden="true"></div>
 <title>Bimestrales III</title>
@@ -453,6 +450,49 @@ mark.tm{background:var(--gold-soft); box-shadow:inset 0 -2px 0 var(--gold)}
 .unit.mod{--u:var(--hema); --us:var(--hema-soft)}
 .unit.inv{--u:var(--nerv); --us:var(--nerv-soft)}
 .wtag.lit{background:var(--rust-soft); color:var(--rust)}
+/* ---- palacio de memoria (lit) ---- */
+.pal-top{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:16px; margin-bottom:22px; align-items:start}
+.pal-map{margin:0; overflow-x:auto}
+.pal-svg{display:block; width:100%; min-width:520px; height:auto}
+.pal-map figcaption{font-size:.85rem; color:var(--muted); margin-top:6px}
+.pal-map,.pal-how,.pal-st{background-color:var(--lg-tint,var(--surface)); border:1px solid var(--lg-edge,var(--line)); border-radius:14px; padding:14px 16px; -webkit-backdrop-filter:blur(var(--lg-blur,0)) saturate(var(--lg-sat,1)); backdrop-filter:blur(var(--lg-blur,0)) saturate(var(--lg-sat,1)); box-shadow:inset 0 1.5px 0 rgba(255,255,255,.3), 0 14px 40px -16px rgba(0,0,0,.75)}
+.pal-yard{fill:var(--rust-soft); stroke:var(--rust); stroke-dasharray:6 6; stroke-width:1.5}
+.pal-house{fill:var(--bg); stroke:var(--ink); stroke-width:3; opacity:.92}
+.pal-room{fill:none; stroke:var(--line); stroke-width:1.5}
+.pal-rl{font-family:var(--mono); font-size:13px; fill:var(--muted)}
+.pal-zl{font-family:var(--mono); font-size:12px; fill:var(--rust); letter-spacing:.06em}
+.pal-door{stroke:var(--rust); stroke-width:6; stroke-linecap:round}
+.pal-path{fill:none; stroke:var(--ink); stroke-width:1.5; stroke-dasharray:3 6; opacity:.55}
+.pal-pin circle{stroke:rgba(0,0,0,.35); stroke-width:1.5; transition:r .15s}
+.pal-pin text{font-family:var(--display); font-weight:800; font-size:14px; text-anchor:middle; fill:#08101c; pointer-events:none}
+.pal-pin:hover circle,.pal-pin:focus-visible circle{r:18}
+.pal-pin.ok circle{stroke:var(--ok); stroke-width:4} .pal-pin.no circle{stroke:var(--bad); stroke-width:4}
+.z-rom{--u:var(--rust); --us:var(--rust-soft)} .z-mod{--u:var(--hema); --us:var(--hema-soft)}
+.z-pos{--u:var(--nerv); --us:var(--nerv-soft)} .z-inv{--u:var(--gold); --us:var(--gold-soft)}
+.pal-pin circle{fill:var(--u)}
+.pal-how ol{margin:6px 0 12px; padding-left:20px; font-size:.93rem}
+.pal-how li{margin:4px 0}
+.pal-mode{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+.pal-mode .btn[aria-pressed="true"]{background-image:linear-gradient(135deg,var(--mint,var(--ink)),var(--jade,var(--ink))); color:#03140b; border-color:transparent}
+.pal{display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr)); gap:14px}
+.pal-st{border-top:3px solid var(--u); scroll-margin-top:90px}
+.pal-st header{display:flex; gap:12px; align-items:center}
+.pal-n{flex:none; width:34px; height:34px; border-radius:50%; background:var(--u); color:#08101c; font-family:var(--display); font-weight:800; display:grid; place-items:center}
+.pal-st h3{font-size:1.15rem}
+.pal-z{font-family:var(--mono); font-size:.72rem; color:var(--u); letter-spacing:.04em; text-transform:uppercase}
+.pal-res{margin-left:auto; font-family:var(--mono); font-size:.75rem}
+.pal-st.ok .pal-res::after{content:"✓ la tenía"; color:var(--ok)} .pal-st.no .pal-res::after{content:"↺ repasar"; color:var(--bad)}
+.pal-k{display:block; font-family:var(--mono); font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-bottom:4px}
+.pal-esc{margin-top:12px; padding:10px 14px; border-radius:10px; background:var(--us); font-size:1rem; line-height:1.6}
+.pal-esc b{color:var(--u)}
+.pal-dat{margin-top:10px; font-size:.92rem}
+.pal-dat ul{margin:0; padding-left:18px} .pal-dat li{margin:4px 0}
+.pal-ask,.pal-act{display:none}
+.pal.recall .pal-ask{display:block; margin:12px 0 4px; color:var(--muted); font-style:italic}
+.pal.recall .pal-act{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+.pal.recall .pal-st:not(.open) .pal-body,.pal.recall .pal-st:not(.open) .pal-ok,.pal.recall .pal-st:not(.open) .pal-no{display:none}
+.pal.recall .pal-st.open .pal-see,.pal.recall .pal-st.open .pal-ask{display:none}
+@media (max-width:860px){ .pal-top{grid-template-columns:minmax(0,1fr)} }
 .day.exam.lit{background:var(--rust); border-color:var(--rust); color:var(--surface)}
 .tl-fig{margin:0 0 36px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px 16px}
 .tl-fig figcaption{font-size:.85rem; color:var(--muted); margin-top:6px}
@@ -1567,6 +1607,7 @@ document.addEventListener("pointermove", function (e) {
     <nav class="tabs" data-tabs="lit">
       <a href="#lit" data-t="resumen">Resumen</a>
       <a href="#lit-casos" data-t="casos">Casos de investigación</a>
+      <a href="#lit-palacio" data-t="palacio">Palacio de memoria</a>
       <a href="#lit-tarjetas" data-t="tarjetas">Tarjetas</a>
       <a href="#lit-quiz" data-t="quiz">Quiz</a>
       <a href="#lit-plan" data-t="plan">Plan y fuentes</a>
@@ -2135,6 +2176,150 @@ document.addEventListener("pointermove", function (e) {
       <div style="margin-left:auto;display:flex;gap:8px;align-items:center"><span class="score" id="csScore"></span></div>
     </div>
     <div id="casos"></div>
+  </div>
+
+  <!-- ===== PALACIO ===== -->
+  <div class="wrap pane" id="p-lit-palacio" hidden>
+    <div class="toolbar">
+      <div><h2 style="font-size:1.4rem">Palacio de memoria</h2><p style="margin:2px 0 0;color:var(--muted);font-size:.92rem">Todo el temario de Literatura guardado en 13 lugares de una casa. Afuera está el Romanticismo, adentro el Modernismo, en tu cuarto el Posmodernismo y en el escritorio el artículo de investigación. Cambia los lugares por los de tu casa real, pero en el mismo orden.</p></div>
+    </div>
+    <div class="pal-top">
+      <figure class="pal-map"><svg class="pal-svg" viewBox="0 0 660 400" role="img" aria-label="Plano de la casa con las 13 estaciones del recorrido"><rect class="pal-yard" x="6" y="6" width="648" height="388" rx="18"/><text class="pal-zl" x="22" y="30">AFUERA · ROMANTICISMO</text><rect class="pal-house" x="170" y="40" width="470" height="340" rx="6"/><rect class="pal-room" x="170" y="40" width="190" height="160"/><text class="pal-rl" x="178" y="58">Sala</text><rect class="pal-room" x="360" y="40" width="130" height="160"/><text class="pal-rl" x="368" y="58">Comedor</text><rect class="pal-room" x="490" y="40" width="150" height="160"/><text class="pal-rl" x="498" y="58">Cocina</text><rect class="pal-room" x="170" y="200" width="470" height="40"/><text class="pal-rl" x="178" y="225">Pasillo</text><rect class="pal-room" x="170" y="240" width="130" height="140"/><text class="pal-rl" x="178" y="258">Estudio</text><rect class="pal-room" x="300" y="240" width="190" height="140"/><text class="pal-rl" x="308" y="258">Tu cuarto</text><rect class="pal-room" x="490" y="240" width="150" height="140"/><text class="pal-rl" x="498" y="258">Baño</text><line class="pal-door" x1="170" y1="92" x2="170" y2="132"/><polyline class="pal-path" points="88,330 88,225 112,112 170,112 265,128 425,128 565,128 565,318 420,220 360,300 448,345 212,300 262,345"/><a href="#pal-1" class="pal-pin z-rom" data-n="1" aria-label="Estación 1: Jardín"><circle cx="88" cy="330" r="15"/><text x="88" y="335">1</text></a><a href="#pal-2" class="pal-pin z-rom" data-n="2" aria-label="Estación 2: Garaje"><circle cx="88" cy="225" r="15"/><text x="88" y="230">2</text></a><a href="#pal-3" class="pal-pin z-rom" data-n="3" aria-label="Estación 3: Porche"><circle cx="112" cy="112" r="15"/><text x="112" y="117">3</text></a><a href="#pal-4" class="pal-pin z-rom" data-n="4" aria-label="Estación 4: Puerta"><circle cx="170" cy="112" r="15"/><text x="170" y="117">4</text></a><a href="#pal-5" class="pal-pin z-mod" data-n="5" aria-label="Estación 5: Sala"><circle cx="265" cy="128" r="15"/><text x="265" y="133">5</text></a><a href="#pal-6" class="pal-pin z-mod" data-n="6" aria-label="Estación 6: Comedor"><circle cx="425" cy="128" r="15"/><text x="425" y="133">6</text></a><a href="#pal-7" class="pal-pin z-mod" data-n="7" aria-label="Estación 7: Cocina"><circle cx="565" cy="128" r="15"/><text x="565" y="133">7</text></a><a href="#pal-8" class="pal-pin z-mod" data-n="8" aria-label="Estación 8: Baño"><circle cx="565" cy="318" r="15"/><text x="565" y="323">8</text></a><a href="#pal-9" class="pal-pin z-mod" data-n="9" aria-label="Estación 9: Pasillo"><circle cx="420" cy="220" r="15"/><text x="420" y="225">9</text></a><a href="#pal-10" class="pal-pin z-pos" data-n="10" aria-label="Estación 10: Tu cuarto"><circle cx="360" cy="300" r="15"/><text x="360" y="305">10</text></a><a href="#pal-11" class="pal-pin z-pos" data-n="11" aria-label="Estación 11: Debajo de la cama"><circle cx="448" cy="345" r="15"/><text x="448" y="350">11</text></a><a href="#pal-12" class="pal-pin z-inv" data-n="12" aria-label="Estación 12: Escritorio"><circle cx="212" cy="300" r="15"/><text x="212" y="305">12</text></a><a href="#pal-13" class="pal-pin z-inv" data-n="13" aria-label="Estación 13: Encima del escritorio"><circle cx="262" cy="345" r="15"/><text x="262" y="350">13</text></a></svg><figcaption>Toca un número para ir a esa estación. La línea punteada es el recorrido.</figcaption></figure>
+      <div class="pal-how">
+        <b>Cómo usarlo</b>
+        <ol>
+          <li><b>Modo leer:</b> recorre las 13 estaciones y en cada una cierra los ojos hasta “ver” la escena.</li>
+          <li><b>Modo recorrer sin mirar:</b> solo ves el lugar. Di en voz alta qué hay ahí y qué significa, y después ábrelo y marca si lo tenías.</li>
+          <li>Las que se te vayan, repítelas hasta que salgan. Lo que falles en el quiz, agrégalo como imagen a la estación que le toca.</li>
+          <li>Mañana antes del examen: un recorrido mental de 3 minutos, sin el celular.</li>
+        </ol>
+        <div class="pal-mode" role="group" aria-label="Modo">
+          <button class="btn sm" type="button" data-pm="leer" aria-pressed="true">Leer</button>
+          <button class="btn sm" type="button" data-pm="recall" aria-pressed="false">Recorrer sin mirar</button>
+          <span class="score" id="palScore"></span>
+          <button class="btn sm" type="button" id="palReset">Reiniciar</button>
+        </div>
+      </div>
+    </div>
+    <div class="pal" id="pal">
+    <article class="pal-st z-rom" id="pal-1" data-n="1">
+      <header><span class="pal-n">1</span><div><h3>Jardín</h3><span class="pal-z">Afuera · Romanticismo</span></div><span class="pal-res" aria-live="polite"></span></header>
+      <p class="pal-ask">¿Qué hay en el jardín? Imagínalo antes de abrir.</p>
+      <div class="pal-body">
+        <div class="pal-esc"><b class="pal-k">La escena</b>El jardín es una <b>selva</b>. En medio hay un tipo <b>solo</b>, gritando sin pensar, que le declara su amor a una <b>estatua de ángel</b>. En una mano <b>rompe una corona</b> española; con la otra tira a la basura un libro que dice <b>RAZÓN</b>.</div>
+        <div class="pal-dat"><b class="pal-k">Lo que significa · Romanticismo: qué es y sus 5 rasgos</b><ul><li><b>Tres I, una L, una N:</b> <b>I</b>ndividualismo (está solo) · <b>I</b>rracionalismo (grita sin pensar: pasión sobre razón) · <b>I</b>dealización de la mujer y el amor (el ángel) · <b>L</b>iberalismo político (rompe la corona: contra la monarquía y la tiranía) · <b>N</b>aturaleza americana (la selva, personaje autónomo).</li><li>El libro de RAZÓN a la basura: rechazo al <b>racionalismo de la Ilustración</b> y al <b>Clasicismo</b>.</li><li>Nace en Europa (2.ª mitad del s. XVIII); llega a Hispanoamérica a inicios del s. XIX, ligado a la <b>independencia</b> y la <b>identidad nacional</b>.</li></ul></div>
+      </div>
+      <div class="pal-act"><button class="btn sm pal-see" type="button">Ver la escena</button><button class="btn sm know pal-ok" type="button">La tenía</button><button class="btn sm again pal-no" type="button">Se me fue</button></div>
+    </article>
+    <article class="pal-st z-rom" id="pal-2" data-n="2">
+      <header><span class="pal-n">2</span><div><h3>Garaje</h3><span class="pal-z">Afuera · Romanticismo</span></div><span class="pal-res" aria-live="polite"></span></header>
+      <p class="pal-ask">¿Qué hay en el garaje? Imagínalo antes de abrir.</p>
+      <div class="pal-body">
+        <div class="pal-esc"><b class="pal-k">La escena</b>Una <b>carreta</b> con un capataz de carácter de hierro que da <b>chicotazos</b>; en el costado dice <b>“Civilización y barbarie”</b>. Al fondo, un <b>matadero</b>. Todo está lleno de <b>banderas argentinas</b> y en la pared hay un cartel de “Se busca” firmado por <b>Rosas</b>.</div>
+        <div class="pal-dat"><b class="pal-k">Lo que significa · Romanticismo social (1830–1860)</b><ul><li><b>Social</b> = liberal, democrático, republicano; busca el <b>progreso</b> y la <b>identidad nacional</b>.</li><li><i>Facundo. Civilización y barbarie</i> (<b>Sarmiento</b>, ensayo, 1845): el capataz de la tropa de carretas, los grupos humanos, “La República Argentina es una e indivisible”.</li><li>“El matadero” (<b>Echeverría</b>, cuento): líder de la generación romántica argentina.</li><li>La generación argentina = <b>“proscritos” o “desterrados”</b>, perseguidos por el dictador <b>Juan Manuel de Rosas</b>.</li></ul></div>
+      </div>
+      <div class="pal-act"><button class="btn sm pal-see" type="button">Ver la escena</button><button class="btn sm know pal-ok" type="button">La tenía</button><button class="btn sm again pal-no" type="button">Se me fue</button></div>
+    </article>
+    <article class="pal-st z-rom" id="pal-3" data-n="3">
+      <header><span class="pal-n">3</span><div><h3>Porche</h3><span class="pal-z">Afuera · Romanticismo</span></div><span class="pal-res" aria-live="polite"></span></header>
+      <p class="pal-ask">¿Qué hay en el porche? Imagínalo antes de abrir.</p>
+      <div class="pal-body">
+        <div class="pal-esc"><b class="pal-k">La escena</b>En el porche está sentado un <b>gaucho</b> que levanta <b>6 dedos</b> y cuenta hasta <b>8</b> con la otra mano. Detrás se ve su <b>rancho en ruinas</b> y a sus hijos trabajando de peones. Te dice: “<b>jui</b> a la frontera, <b>naides</b> me engaña, soy la liebre o soy el galgo”.</div>
+        <div class="pal-dat"><b class="pal-k">Lo que significa · Martín Fierro (José Hernández, 1872)</b><ul><li>Poesía narrativa <b>gauchesca</b>, Romanticismo sentimental.</li><li><b>6 dedos = sextilla</b> (estrofa de 6 versos) · <b>8 = octosílabos</b> (8 sílabas) · rima de la estrofa 1: <b>abbcbc</b>.</li><li>3 fases: lo reclutan para la frontera (1–10) → deserta y encuentra el rancho en ruinas (11–23) → reflexiona sobre su destino (24–32).</li><li>Causa → efecto: se lo llevan a la frontera → venden la hacienda, la mujer se va, los hijos trabajan de peones y quedan huérfanos.</li><li>Lenguaje <b>coloquial y rural</b> que imita lo oral: “jui” (fui), “naides” (nadie).</li></ul></div>
+      </div>
+      <div class="pal-act"><button class="btn sm pal-see" type="button">Ver la escena</button><button class="btn sm know pal-ok" type="button">La tenía</button><button class="btn sm again pal-no" type="button">Se me fue</button></div>
+    </article>
+    <article class="pal-st z-rom" id="pal-4" data-n="4">
+      <header><span class="pal-n">4</span><div><h3>Puerta</h3><span class="pal-z">Afuera · Romanticismo</span></div><span class="pal-res" aria-live="polite"></span></header>
+      <p class="pal-ask">¿Qué hay en el puerta? Imagínalo antes de abrir.</p>
+      <div class="pal-body">
+        <div class="pal-esc"><b class="pal-k">La escena</b><b>María</b> te abre la puerta. La recorres con los 5 sentidos: <b>ves</b> el cielo azul pálido, <b>oyes</b> su voz dulce, sus <b>lágrimas</b> te ruedan por el cuello, te da a <b>probar</b> cremas y todo <b>huele</b> al huerto. Detrás de ella cuelga un cuadro de una <b>virgen de Rafael</b> con su misma sonrisa.</div>
+        <div class="pal-dat"><b class="pal-k">Lo que significa · María (Jorge Isaacs, 1867)</b><ul><li>Novela colombiana del Romanticismo <b>sentimental (1860–1890)</b>: amor idealizado, el “yo”, el paisaje.</li><li><b>Imágenes sensoriales:</b> visual, auditiva, táctil, gustativa, olfativa.</li><li>Sonrisa “de una virgen de Rafael” = <b>idealización de la mujer</b> (Rafael Sanzio, pintor renacentista de Madonnas).</li><li>Naturaleza = espejo emocional del narrador; María = amor puro e inalcanzable. Narrador de familia acomodada (hacienda, esclavos).</li></ul></div>
+      </div>
+      <div class="pal-act"><button class="btn sm pal-see" type="button">Ver la escena</button><button class="btn sm know pal-ok" type="button">La tenía</button><button class="btn sm again pal-no" type="button">Se me fue</button></div>
+    </article>
+    <article class="pal-st z-mod" id="pal-5" data-n="5">
+      <header><span class="pal-n">5</span><div><h3>Sala</h3><span class="pal-z">Adentro · Modernismo</span></div><span class="pal-res" aria-live="polite"></span></header>
+      <p class="pal-ask">¿Qué hay en el sala? Imagínalo antes de abrir.</p>
+      <div class="pal-body">
+        <div class="pal-esc"><b class="pal-k">La escena</b>Un <b>orfebre</b> pule palabras como si fueran joyas. Un <b>piano y un cuadro conversan</b>. Hay un jarrón chino y un biombo japonés, y un letrero que dice <b>“El arte por el arte”</b>. Alguien tira por la ventana una <b>fábrica humeante</b> y a un señor burgués. La pared izquierda es toda <b>azul</b>; en la derecha cuelga un <b>mapa de América</b>.</div>
+        <div class="pal-dat"><b class="pal-k">Lo que significa · Modernismo (1880–1915): rasgos y etapas</b><ul><li>Reacción contra el <b>materialismo burgués</b> (progreso material ilimitado + positivismo), contra el Realismo y el Naturalismo y contra la cursilería del Romanticismo.</li><li>Rasgos: <b>arte por el arte</b> · libertad de creación · <b>exotismo</b> (jarrón chino) · <b>correspondencia de las artes</b> (piano + cuadro) · renovación métrica (verso libre, poema en prosa) · nuevos recursos · <b>perfección formal</b> (el orfebre).</li><li>Pared azul = etapa <b>preciosista</b>: exotismo, cosmopolitismo (<i>Azul</i>, 1888). Mapa = etapa <b>mundonovista</b>: americanismo, política (<i>Cantos de vida y esperanza</i>, 1905).</li><li>Romántico = inspiración espontánea; modernista = orfebre que pule cada palabra.</li></ul></div>
+      </div>
+      <div class="pal-act"><button class="btn sm pal-see" type="button">Ver la escena</button><button class="btn sm know pal-ok" type="button">La tenía</button><button class="btn sm again pal-no" type="button">Se me fue</button></div>
+    </article>
+    <article class="pal-st z-mod" id="pal-6" data-n="6">
+      <header><span class="pal-n">6</span><div><h3>Comedor</h3><span class="pal-z">Adentro · Modernismo</span></div><span class="pal-res" aria-live="polite"></span></header>
+      <p class="pal-ask">¿Qué hay en el comedor? Imagínalo antes de abrir.</p>
+      <div class="pal-body">
+        <div class="pal-esc"><b class="pal-k">La escena</b>El <b>rey</b> está en un banquete entre cisnes, canarios, mármoles griegos y jarrones chinos. En la esquina, un <b>poeta hambriento</b> da vueltas al <b>manubrio de una caja de música</b> mientras nieva y se va congelando. A los pájaros les ponen mantita; al poeta, no. En la mesa hay un cartel que dice <b>“cuento alegre”</b>.</div>
+        <div class="pal-dat"><b class="pal-k">Lo que significa · “El rey burgués” (Darío, de Azul)</b><ul><li>Rey: frívolo, materialista, ve el arte como <b>lujo</b>. Poeta: pobre, idealista, ve el arte como <b>expresión genuina</b>, fiel hasta la muerte.</li><li>“El arte no viste pantalones, ni habla en burgués”: el arte es libre.</li><li>“A los pájaros se les abrigó, y a él se le dejó al aire glacial”: desprecio burgués por el arte.</li><li>El título es <b>irónico</b>: la historia es trágica. Es modernista por la protesta contra la sociedad burguesa y el exotismo: etapa <b>preciosista</b>.</li></ul></div>
+      </div>
+      <div class="pal-act"><button class="btn sm pal-see" type="button">Ver la escena</button><button class="btn sm know pal-ok" type="button">La tenía</button><button class="btn sm again pal-no" type="button">Se me fue</button></div>
+    </article>
+    <article class="pal-st z-mod" id="pal-7" data-n="7">
+      <header><span class="pal-n">7</span><div><h3>Cocina</h3><span class="pal-z">Adentro · Modernismo</span></div><span class="pal-res" aria-live="polite"></span></header>
+      <p class="pal-ask">¿Qué hay en el cocina? Imagínalo antes de abrir.</p>
+      <div class="pal-body">
+        <div class="pal-esc"><b class="pal-k">La escena</b>Un viejo de <b>pelo gris</b> huele unos rosales y canta “<b>Juventud, divino tesoro…</b>”. Pasan <b>3 mujeres</b>: una de pelo oscuro, una tierna y una celosa que quiere comerse su corazón. En la estufa, un <b>carbón se vuelve diamante</b>, y Martí, junto a una palma, dice “<b>Yo soy un hombre sincero</b>” y le sirve el plato a un amigo antes que a su novia. Es la cocina de la <b>casa</b> y la tetera <b>silba</b>.</div>
+        <div class="pal-dat"><b class="pal-k">Lo que significa · 1.ª generación: Darío, Martí, Casal, Silva</b><ul><li>“Canción de otoño en primavera” (<b>Darío</b>): tópico del <b>paso del tiempo</b> y la juventud perdida; 3 mujeres (inocencia, pasión, posesión); amor plural, fugaz y doloroso; “mi sed de amor no tiene fin”.</li><li><i>Versos sencillos</i> (<b>Martí</b>, 1891): sinceridad; <b>amistad por encima del amor</b>; “Todo, como el diamante, antes que luz es carbón” (la belleza nace del dolor); “Arte soy entre las artes, en los montes, monte soy” (ser universal); “El hijo de un pueblo esclavo vive por él, calla y muere” (Cuba).</li><li><b>Casa</b> = Julián del <b>Casal</b>; la tetera <b>silba</b> = José Asunción <b>Silva</b>. Con Darío y Martí, la <b>1.ª generación</b> completa.</li></ul></div>
+      </div>
+      <div class="pal-act"><button class="btn sm pal-see" type="button">Ver la escena</button><button class="btn sm know pal-ok" type="button">La tenía</button><button class="btn sm again pal-no" type="button">Se me fue</button></div>
+    </article>
+    <article class="pal-st z-mod" id="pal-8" data-n="8">
+      <header><span class="pal-n">8</span><div><h3>Baño</h3><span class="pal-z">Adentro · Modernismo</span></div><span class="pal-res" aria-live="polite"></span></header>
+      <p class="pal-ask">¿Qué hay en el baño? Imagínalo antes de abrir.</p>
+      <div class="pal-body">
+        <div class="pal-esc"><b class="pal-k">La escena</b>En el espejo aparece la <b>sombra de un mono</b>. Un <b>viudo inglés</b> pega en la pared un papel con <b>migas de pan</b> y traza la sombra con lápiz: <b>coincide</b>. De la ducha cuelga un <b>péndulo</b>.</div>
+        <div class="pal-dat"><b class="pal-k">Lo que significa · “Un fenómeno inexplicable” (Lugones, 2.ª gen.)</b><ul><li>El narrador (protagonista) investiga la alucinación del viudo inglés en una hacienda entre <b>Córdoba y Santa Fe</b>, a fines del s. XIX.</li><li>El experimento del papel prueba que es una <b>alucinación fija</b>, no algo sobrenatural.</li><li>Péndulo = <b>Reichenbach y Rutter</b>. “Toda creencia es una volición”. Visión de la ciencia <b>ambivalente</b>.</li><li>Es modernista por lo extraño, lo oculto y el esoterismo. Está en <i>Las fuerzas extrañas</i> (1906).</li></ul></div>
+      </div>
+      <div class="pal-act"><button class="btn sm pal-see" type="button">Ver la escena</button><button class="btn sm know pal-ok" type="button">La tenía</button><button class="btn sm again pal-no" type="button">Se me fue</button></div>
+    </article>
+    <article class="pal-st z-mod" id="pal-9" data-n="9">
+      <header><span class="pal-n">9</span><div><h3>Pasillo</h3><span class="pal-z">Adentro · Modernismo</span></div><span class="pal-res" aria-live="polite"></span></header>
+      <p class="pal-ask">¿Qué hay en el pasillo? Imagínalo antes de abrir.</p>
+      <div class="pal-body">
+        <div class="pal-esc"><b class="pal-k">La escena</b>Por el pasillo pasan <b>3 jinetes</b>: un <b>charro</b> con sombrero piramidal y joyas, tan quieto que parece escultura; un <b>llanero</b> sombrío con machete; y un <b>gaucho</b> cansado que arrastra los pies.</div>
+        <div class="pal-dat"><b class="pal-k">Lo que significa · Tríptico criollo (Chocano, 2.ª gen.)</b><ul><li>Charro (México): lujo y ostentación · Llanero (los llanos): bohío, machete, naturaleza salvaje · Gaucho (la Pampa): “cansancio de la tierra”.</li><li>Retrato del <b>hombre americano</b>: orgulloso, valiente, unido a su tierra.</li><li>Modernista de la etapa <b>mundonovista</b>: canta a tierras y tipos americanos (<i>Alma América</i>, 1906).</li><li><b>2.ª generación:</b> Jaimes Freyre, Amado Nervo, <b>Lugones</b>, Herrera y Reissig, <b>Chocano</b>. Truco: la cocina es la 1.ª; el baño y el pasillo son la 2.ª.</li></ul></div>
+      </div>
+      <div class="pal-act"><button class="btn sm pal-see" type="button">Ver la escena</button><button class="btn sm know pal-ok" type="button">La tenía</button><button class="btn sm again pal-no" type="button">Se me fue</button></div>
+    </article>
+    <article class="pal-st z-pos" id="pal-10" data-n="10">
+      <header><span class="pal-n">10</span><div><h3>Tu cuarto</h3><span class="pal-z">Tu cuarto · Posmodernismo</span></div><span class="pal-res" aria-live="polite"></span></header>
+      <p class="pal-ask">¿Qué hay en tu cuarto? Imagínalo antes de abrir.</p>
+      <div class="pal-body">
+        <div class="pal-esc"><b class="pal-k">La escena</b>Tu cuarto es <b>sencillo</b>, sin lujo, con <b>fotos de tu familia</b>. Por la ventana entra un <b>sol que te derrite</b>. En la pared hay una fila de mujeres (abuela, mamá, hija) con la <b>boca tapada</b>. En la puerta está <b>Alejandro Magno con 14 soldados</b>.</div>
+        <div class="pal-dat"><b class="pal-k">Lo que significa · Posmodernismo (1910–1940) y Alfonsina Storni</b><ul><li>El Posmodernismo <b>abandona</b> el exotismo, el arte por el arte y el lujo verbal → <b>sencillismo</b>, temas autóctonos, <b>vida doméstica</b>. <b>Mantiene</b> lo extraño y lo enfermizo y <b>amplifica el erotismo</b>.</li><li>“Un sol” (<b>Storni</b>): “Yo necesito un sol que me disuelva”; búsqueda de un amor pleno; 6 cuartetos, endecasílabos, rima ABBA.</li><li>“Bien pudiera ser”: opresión heredada de la mujer, “de familia en familia, de mujer en mujer”; la escritura como liberación. Alejandro con 14 soldados: <b>soneto (14 versos) en alejandrinos (14 sílabas)</b>.</li><li>Otros posmodernistas: Baldomero Fernández (sencillismo), Juana de Ibarbourou.</li></ul></div>
+      </div>
+      <div class="pal-act"><button class="btn sm pal-see" type="button">Ver la escena</button><button class="btn sm know pal-ok" type="button">La tenía</button><button class="btn sm again pal-no" type="button">Se me fue</button></div>
+    </article>
+    <article class="pal-st z-pos" id="pal-11" data-n="11">
+      <header><span class="pal-n">11</span><div><h3>Debajo de la cama</h3><span class="pal-z">Tu cuarto · Posmodernismo</span></div><span class="pal-res" aria-live="polite"></span></header>
+      <p class="pal-ask">¿Qué hay debajo de la cama? Imagínalo antes de abrir.</p>
+      <div class="pal-body">
+        <div class="pal-esc"><b class="pal-k">La escena</b>Debajo de la cama, un <b>vampiro muerde un panal de oro</b>. Por el cuarto pasa caminando <b>la Muerte</b>. Encima de la cama, un <b>alma desnuda</b> suelta mariposas y pétalos mientras repite “<b>Alma que…, alma que…</b>”.</div>
+        <div class="pal-dat"><b class="pal-k">Lo que significa · Delmira Agustini: “El vampiro” y “Alma desnuda”</b><ul><li>“El vampiro”: el vampiro es <b>metáfora del dolor amoroso</b> (nada sobrenatural). Símil “como en el oro de un panal mordiera”; <b>personificación</b> de la Muerte. Cuartetos endecasílabos, ABAB.</li><li>Romántico (pasión, dolor amoroso) + posmodernista (tono confesional, erotismo descarnado).</li><li>“Alma desnuda”: <b>anáfora</b> “Alma que…”; <b>paralelismo</b> “que puede ser una amapola / que puede ser un lirio”. Tercetos encadenados (ABA) + cuarteto final, endecasílabos.</li></ul></div>
+      </div>
+      <div class="pal-act"><button class="btn sm pal-see" type="button">Ver la escena</button><button class="btn sm know pal-ok" type="button">La tenía</button><button class="btn sm again pal-no" type="button">Se me fue</button></div>
+    </article>
+    <article class="pal-st z-inv" id="pal-12" data-n="12">
+      <header><span class="pal-n">12</span><div><h3>Escritorio</h3><span class="pal-z">Escritorio · Investigación</span></div><span class="pal-res" aria-live="polite"></span></header>
+      <p class="pal-ask">¿Qué hay en el escritorio? Imagínalo antes de abrir.</p>
+      <div class="pal-body">
+        <div class="pal-esc"><b class="pal-k">La escena</b>El escritorio tiene <b>3 cajones</b>. En el primero hay <b>periódicos</b>, un <b>micrófono</b> y <b>tubos de ensayo</b>. En el segundo hay una <b>piscina</b> mini: metes el pie, miras el agua, mides si lo frío depende de lo hondo y preguntas por qué. En el tercero, una <b>calculadora</b> y un <b>diario de relatos</b>.</div>
+        <div class="pal-dat"><b class="pal-k">Lo que significa · Los 3 ejes de la investigación</b><ul><li>Cajón 1, <b>fuente</b>: documental (periódicos) · de campo (micrófono: entrevistas, encuestas) · experimental (tubos: variables controladas).</li><li>Cajón 2, <b>profundidad</b>: exploratoria (meter el pie: tema nuevo) → descriptiva (mirar: cómo es) → correlacional (si dos variables se relacionan) → explicativa (por qué).</li><li>Cajón 3, <b>enfoque</b>: cuantitativa (números) · cualitativa (relatos, percepciones).</li><li>Verbo del objetivo general: explorar · describir · analizar · evaluar/explicar, según la profundidad.</li></ul></div>
+      </div>
+      <div class="pal-act"><button class="btn sm pal-see" type="button">Ver la escena</button><button class="btn sm know pal-ok" type="button">La tenía</button><button class="btn sm again pal-no" type="button">Se me fue</button></div>
+    </article>
+    <article class="pal-st z-inv" id="pal-13" data-n="13">
+      <header><span class="pal-n">13</span><div><h3>Encima del escritorio</h3><span class="pal-z">Escritorio · Investigación</span></div><span class="pal-res" aria-live="polite"></span></header>
+      <p class="pal-ask">¿Qué hay encima del escritorio? Imagínalo antes de abrir.</p>
+      <div class="pal-body">
+        <div class="pal-esc"><b class="pal-k">La escena</b>Encima del escritorio, un <b>cubo de hielo</b> con las letras <b>I · C · E</b> se derrite sobre una hoja que dice “<b>1</b> objetivo general”. Al lado, una lista que dice “comprar bolsas de basura” está <b>tachada</b>.</div>
+        <div class="pal-dat"><b class="pal-k">Lo que significa · Objetivos: general + 3 específicos</b><ul><li><b>ICE</b>, los 3 específicos en orden: <b>I</b>dentificar → <b>C</b>omparar → <b>E</b>stablecer.</li><li>Solo <b>un</b> objetivo general, con un verbo en infinitivo.</li><li>La lista tachada: un objetivo es una <b>meta</b>, no una actividad (“aplicar una encuesta” ✗).</li><li>Receta: <b>verbo + qué + en quiénes + dónde/cuándo</b>. Cada caso vale 8 puntos.</li></ul></div>
+      </div>
+      <div class="pal-act"><button class="btn sm pal-see" type="button">Ver la escena</button><button class="btn sm know pal-ok" type="button">La tenía</button><button class="btn sm again pal-no" type="button">Se me fue</button></div>
+    </article>
+    </div>
   </div>
 
   <div class="wrap pane" id="p-lit-tarjetas" hidden></div>
@@ -4280,7 +4465,7 @@ document.addEventListener("click", function(e){
 });
 
 /* ---------- router ---------- */
-var TABS = {rel:["resumen","tarjetas","quiz","misa","plan"], bio:["resumen","tarjetas","quiz","localizar","parciales","plan"], log:["resumen","cuadro","talleres","tarjetas","quiz","plan"], lit:["resumen","casos","tarjetas","quiz","plan"], fis:["resumen","formulario","problemas","mano","tarjetas","quiz","plan"]};
+var TABS = {rel:["resumen","tarjetas","quiz","misa","plan"], bio:["resumen","tarjetas","quiz","localizar","parciales","plan"], log:["resumen","cuadro","talleres","tarjetas","quiz","plan"], lit:["resumen","casos","palacio","tarjetas","quiz","plan"], fis:["resumen","formulario","problemas","mano","tarjetas","quiz","plan"]};
 function route(){
   var h = (location.hash || "#inicio").slice(1), parts = h.split("-");
   var view = TABS[parts[0]] ? parts[0] : "inicio";
@@ -5706,6 +5891,35 @@ function initParciales(){
   $("#pxHide").onclick = function(){ $$(".px-l > li", p).forEach(function(li){ li.classList.remove("show"); }); $$(".px-t", p).forEach(function(x){ x.classList.remove("show"); }); $$(".px-tb", p).forEach(function(x){ x.hidden = false; }); };
 }
 
+/* ---------- palacio de memoria (lit) ---------- */
+function initPalacio(){
+  var box = $("#pal"), pane = $("#p-lit-palacio");
+  S.pal = S.pal || {};
+  function paint(){
+    var ok = 0;
+    $$(".pal-st", box).forEach(function(c){
+      var r = S.pal[c.dataset.n]; c.classList.toggle("ok", r === 1); c.classList.toggle("no", r === 0); if (r === 1) ok++;
+      var pin = $('.pal-pin[data-n="' + c.dataset.n + '"]', pane); pin.classList.toggle("ok", r === 1); pin.classList.toggle("no", r === 0);
+    });
+    $("#palScore").textContent = ok + " / 13 recordadas";
+  }
+  function mode(m){
+    box.classList.toggle("recall", m === "recall");
+    $$("[data-pm]", pane).forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.pm === m ? "true" : "false"); });
+    $$(".pal-st", box).forEach(function(c){ c.classList.remove("open"); });
+  }
+  $$("[data-pm]", pane).forEach(function(b){ b.onclick = function(){ mode(b.dataset.pm); }; });
+  $$(".pal-pin", pane).forEach(function(a){ a.addEventListener("click", function(e){ e.preventDefault(); $("#pal-" + a.dataset.n).scrollIntoView({behavior:"smooth", block:"start"}); }); });
+  box.addEventListener("click", function(e){
+    var c = e.target.closest(".pal-st"); if (!c) return;
+    if (e.target.closest(".pal-see")) c.classList.add("open");
+    else if (e.target.closest(".pal-ok")) { S.pal[c.dataset.n] = 1; save(); paint(); }
+    else if (e.target.closest(".pal-no")) { S.pal[c.dataset.n] = 0; save(); paint(); }
+  });
+  $("#palReset").onclick = function(){ S.pal = {}; save(); paint(); mode("recall"); };
+  paint();
+}
+
 /* ---------- tarjetas (una por materia) ---------- */
 var SUBJ = {
   rel:{units:["ser","esc","muj","amo","mis"], cards:CARDS_REL, qs:QS_REL},
@@ -5837,8 +6051,8 @@ var PLAN = [
   [new Date(2026,9,3), "Sáb", [["bio","Músculo-esquelético: fibra, contracción, organización y funciones","b2"],["bio","Esqueleto: bursa, divisiones, tipos de hueso, afecciones","b3"],["bio","Localizar: las 4 figuras en Estudiar y luego en Examen","b4"],["log","Lógica: el juicio (estructura, clasificación, A·E·I·O)","l1"]]],
   [new Date(2026,9,4), "Dom", [["bio","Nervioso: neurona, gradiente iónico, sinapsis","b5"],["bio","SNC, encéfalo, cerebro, cerebelo, tronco, límbico, médula, SNP","b6"],["bio","Drogas · quiz de Nervioso","b7"],["log","Lógica: cuadro de oposición con la herramienta interactiva","l2"]]],
   [new Date(2026,9,5), "Lun", [["log","Lógica: razonamiento, silogismo, validez","l3"],["log","Lógica: hacer los 2 talleres resueltos sin mirar + quiz","l4"],["bio","Quiz de Biología · Todas","b8"],["bio","Tarjetas marcadas “repasar” y Localizar en modo examen","b9"],["bio","Parciales anteriores 1 y 3: hacerlos sin mirar las respuestas","b11"],["bio","Enfermedades neurodegenerativas (la hoja de la profe)","b12"],["lit","Literatura: Romanticismo (teoría + María, Martín Fierro, Facundo)","t1"]]],
-  [new Date(2026,9,6), "Mar", [["log","Antes de Lógica: tabla de inferencias del cuadro y reglas del silogismo","l5"],["bio","Entre exámenes: solo los cuadros “Lo que más cae” de Biología","b10"],["lit","Tarde: Modernismo y Posmodernismo (rasgos, etapas, generaciones)","t2"],["lit","Las 7 lecturas modernistas y posmodernistas + métrica y figuras","t6"],["lit","Casos de investigación: clasificar y redactar objetivos sin mirar","t3"],["lit","Noche: quiz de Literatura · Todas","t4"]], ["log","bio"]],
-  [new Date(2026,9,7), "Mié", [["lit","Antes de Literatura: “Lo que más cae” + tabla de verbos de objetivos","t5"],["fis","Física · Kirchhoff: resumen + práctica (10) + bimestral 1–5","f1"],["fis","Física · RC: resumen, guía y bimestral 6–14","f2"],["fis","Física · RC: práctica de 11 (los transitorios P8–P11 primero)","f3"],["fis","Física · Magnetismo: resumen + mano derecha 3D + bimestral 15–22","f4"]], ["lit"]],
+  [new Date(2026,9,6), "Mar", [["log","Antes de Lógica: tabla de inferencias del cuadro y reglas del silogismo","l5"],["bio","Entre exámenes: solo los cuadros “Lo que más cae” de Biología","b10"],["lit","Tarde: Modernismo y Posmodernismo (rasgos, etapas, generaciones)","t2"],["lit","Las 7 lecturas modernistas y posmodernistas + métrica y figuras","t6"],["lit","Palacio de memoria: un recorrido leyendo y otro sin mirar","t7"],["lit","Casos de investigación: clasificar y redactar objetivos sin mirar","t3"],["lit","Noche: quiz de Literatura · Todas","t4"]], ["log","bio"]],
+  [new Date(2026,9,7), "Mié", [["lit","Antes de Literatura: recorrido mental del palacio + “Lo que más cae” + tabla de verbos","t5"],["fis","Física · Kirchhoff: resumen + práctica (10) + bimestral 1–5","f1"],["fis","Física · RC: resumen, guía y bimestral 6–14","f2"],["fis","Física · RC: práctica de 11 (los transitorios P8–P11 primero)","f3"],["fis","Física · Magnetismo: resumen + mano derecha 3D + bimestral 15–22","f4"]], ["lit"]],
   [new Date(2026,9,8), "Jue", [["fis","Antes de Física: formulario completo y 5 preguntas de la mano derecha","f5"]], ["fis"]]
 ];
 var EXNAME = {rel:"Religión", lit:"Literatura · 9:30 am", fis:"Física · 9:30 am", bio:"Biología · 9:30 am", log:"Lógica · 7:30 am"};
@@ -5933,7 +6147,7 @@ function renderAllPlans(){
 
 /* ---------- init ---------- */
 buildToc("rel"); buildToc("lit"); buildToc("fis"); buildToc("bio"); buildToc("log"); syncDone(); countdown();
-makeFlash("rel"); makeFlash("bio"); makeFlash("log"); makeFlash("lit"); makeFlash("fis"); makeQuiz("rel"); makeQuiz("bio"); makeQuiz("log"); makeQuiz("lit"); makeQuiz("fis"); renderCasos(); initProblems(); RH.init(); initParciales(); renderCQ(); newCD(); renderTalleres(); makeMisa(); renderLoc();
+makeFlash("rel"); makeFlash("bio"); makeFlash("log"); makeFlash("lit"); makeFlash("fis"); makeQuiz("rel"); makeQuiz("bio"); makeQuiz("log"); makeQuiz("lit"); makeQuiz("fis"); renderCasos(); initProblems(); RH.init(); initParciales(); initPalacio(); renderCQ(); newCD(); renderTalleres(); makeMisa(); renderLoc();
 renderAllPlans();
 if (!location.hash && S.last) { try { history.replaceState(null, "", "#" + S.last); } catch(e){} }
 route();
