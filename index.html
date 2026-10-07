@@ -449,6 +449,56 @@ mark.tm{background:var(--gold-soft); box-shadow:inset 0 -2px 0 var(--gold)}
 .unit.mod{--u:var(--hema); --us:var(--hema-soft)}
 .unit.inv{--u:var(--nerv); --us:var(--nerv-soft)}
 .wtag.lit{background:var(--rust-soft); color:var(--rust)}
+/* ---- simulacro (lit) ---- */
+.sim-bar{position:sticky; top:64px; z-index:5; display:flex; gap:12px; align-items:center; flex-wrap:wrap; background:var(--lg-tint,var(--surface)); -webkit-backdrop-filter:blur(var(--lg-blur,0)); backdrop-filter:blur(var(--lg-blur,0)); border:1px solid var(--line); border-radius:14px; padding:10px 14px; margin-bottom:18px}
+.sim-clock{font-family:var(--mono); font-weight:700; font-size:1.1rem}
+.sim-clock.over{color:var(--bad)}
+.sim-st{font-size:.9rem; color:var(--muted)}
+.sim-st b{color:var(--ink)}
+.sim-sec{background:var(--lg-tint,var(--surface)); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-bottom:18px}
+.sim-sec>h3{font-size:1.2rem; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap}
+.sim-sec>h3 span{font-family:var(--mono); font-size:.75rem; color:var(--muted); font-weight:600}
+.sim-sec>p.sim-ins{margin:4px 0 10px; color:var(--muted); font-size:.92rem}
+.sq{padding:12px 0; border-top:1px dashed var(--line)}
+.sq:first-of-type{border-top:0}
+.sq-q{margin:0 0 8px; font-weight:600}
+.sq-q i{font-weight:400}
+.sim-opts{display:flex; flex-direction:column; gap:6px; max-width:760px}
+.sim-opts.row{flex-direction:row; flex-wrap:wrap}
+.sim-o{text-align:left; border:1px solid var(--line); background:var(--surface); border-radius:10px; padding:8px 12px; font-size:.95rem}
+.sim-o:hover{border-color:var(--ink)}
+.sim-o[aria-pressed="true"]{border-color:var(--ink); box-shadow:inset 0 0 0 1px var(--ink); font-weight:700}
+.sim.done .sim-o{cursor:default}
+.sim.done .sim-o.right{background:var(--ok-soft); border-color:var(--ok); color:var(--ink)}
+.sim.done .sim-o.wrong{background:var(--bad-soft); border-color:var(--bad); text-decoration:line-through}
+.sim-sub{font-family:var(--mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:8px 0 4px}
+.sim-x{display:none; margin-top:8px; font-size:.9rem; padding:6px 10px; border-radius:8px; background:var(--sunk)}
+.sim.done .sim-x{display:block}
+.sim-x a{color:var(--hema)}
+.sq.ok .sim-x::before{content:"✓ "; color:var(--ok); font-weight:700} .sq.bad .sim-x::before{content:"✗ "; color:var(--bad); font-weight:700}
+.sim-pareo{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.2fr); gap:8px 14px; align-items:center; max-width:760px}
+.sim-pareo select{font:inherit; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:6px 8px; width:100%}
+.sim-pareo select.right{border-color:var(--ok); background:var(--ok-soft)} .sim-pareo select.wrong{border-color:var(--bad); background:var(--bad-soft)}
+.sim-pareo .fix{grid-column:2; font-size:.85rem; color:var(--ok); margin-top:-4px}
+.sim-caso p.cs-t{margin:4px 0 10px}
+.sim-caso .cs-axes{margin-bottom:10px}
+.sim textarea{width:100%; min-height:80px; font:inherit; font-size:.95rem; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:8px 10px; resize:vertical}
+.sim label.sim-lab{display:block; font-family:var(--mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:10px 0 4px}
+.sim-model,.sim-rub{display:none}
+.sim.done .sim-model{display:block; margin-top:10px; padding:10px 14px; border-radius:10px; background:var(--nerv-soft); font-size:.94rem}
+.sim-model p{margin:4px 0} .sim-model ol{margin:4px 0 0; padding-left:1.3em}
+.sim.done .sim-rub{display:block; margin-top:10px; padding:10px 14px; border-radius:10px; border:1px dashed var(--warn)}
+.sim-rub b{display:block; font-size:.85rem; color:var(--warn); margin-bottom:4px}
+.sim-rub label{display:flex; gap:8px; align-items:flex-start; font-size:.92rem; margin:4px 0; cursor:pointer}
+.sim-rub input{margin-top:5px}
+.sim-res{display:none}
+.sim.done .sim-res{display:block}
+.sim-big{font-family:var(--display); font-size:2.4rem; font-weight:800; line-height:1}
+.sim-res ul{margin:6px 0 0; padding-left:20px}
+.sim-res .sim-parts{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; margin:12px 0}
+.sim-res .sim-parts div{background:var(--sunk); border-radius:10px; padding:8px 10px; font-size:.85rem}
+.sim-res .sim-parts b{display:block; font-family:var(--mono); font-size:1rem}
+@media (max-width:620px){ .sim-pareo{grid-template-columns:minmax(0,1fr)} .sim-pareo .fix{grid-column:1} .sim-bar{top:100px} }
 /* ---- palacio de memoria (lit) ---- */
 .pal-top{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:16px; margin-bottom:22px; align-items:start}
 .pal-map{margin:0; overflow-x:auto}
@@ -1614,6 +1664,7 @@ a.chip:hover{border-color:var(--jade); color:var(--jade)}
       <a href="#lit" data-t="resumen">Resumen</a>
       <a href="#lit-casos" data-t="casos">Casos de investigación</a>
       <a href="#lit-palacio" data-t="palacio">Palacio de memoria</a>
+      <a href="#lit-simulacro" data-t="simulacro">Simulacro de examen</a>
       <a href="#lit-tarjetas" data-t="tarjetas">Tarjetas</a>
       <a href="#lit-quiz" data-t="quiz">Quiz</a>
       <a href="#lit-plan" data-t="plan">Plan y fuentes</a>
@@ -2182,6 +2233,19 @@ a.chip:hover{border-color:var(--jade); color:var(--jade)}
       <div style="margin-left:auto;display:flex;gap:8px;align-items:center"><span class="score" id="csScore"></span></div>
     </div>
     <div id="casos"></div>
+  </div>
+
+  <!-- ===== SIMULACRO ===== -->
+  <div class="wrap pane" id="p-lit-simulacro" hidden>
+    <div class="toolbar">
+      <div><h2 style="font-size:1.4rem">Simulacro de examen</h2><p style="margin:2px 0 0;color:var(--muted);font-size:.92rem">Un examen completo de 100 puntos con todo lo que puede venir: Romanticismo, Modernismo, Posmodernismo, métrica y figuras, y casos de investigación. Hazlo de una sola vez, sin mirar el resumen, en 60 minutos.</p></div>
+    </div>
+    <div class="sim-bar" id="simBar">
+      <span class="sim-clock" id="simClock">60:00</span>
+      <span class="sim-st" id="simSt"></span>
+      <span style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm pri" type="button" id="simGo">Entregar y corregir</button><button class="btn sm" type="button" id="simNew">Empezar de nuevo</button></span>
+    </div>
+    <div id="sim"></div>
   </div>
 
   <!-- ===== PALACIO ===== -->
@@ -4471,7 +4535,7 @@ document.addEventListener("click", function(e){
 });
 
 /* ---------- router ---------- */
-var TABS = {rel:["resumen","tarjetas","quiz","misa","plan"], bio:["resumen","tarjetas","quiz","localizar","parciales","plan"], log:["resumen","cuadro","talleres","tarjetas","quiz","plan"], lit:["resumen","casos","palacio","tarjetas","quiz","plan"], fis:["resumen","formulario","problemas","mano","tarjetas","quiz","plan"]};
+var TABS = {rel:["resumen","tarjetas","quiz","misa","plan"], bio:["resumen","tarjetas","quiz","localizar","parciales","plan"], log:["resumen","cuadro","talleres","tarjetas","quiz","plan"], lit:["resumen","casos","palacio","simulacro","tarjetas","quiz","plan"], fis:["resumen","formulario","problemas","mano","tarjetas","quiz","plan"]};
 function route(){
   var h = (location.hash || "#inicio").slice(1), parts = h.split("-");
   var view = TABS[parts[0]] ? parts[0] : "inicio";
@@ -5897,6 +5961,131 @@ function initParciales(){
   $("#pxHide").onclick = function(){ $$(".px-l > li", p).forEach(function(li){ li.classList.remove("show"); }); $$(".px-t", p).forEach(function(x){ x.classList.remove("show"); }); $$(".px-tb", p).forEach(function(x){ x.hidden = false; }); };
 }
 
+/* ---------- simulacro de examen (lit) ---------- */
+var SIM = {"mc": [["t-rom-def", "¿Qué rechazaba el Romanticismo?", ["El racionalismo de la Ilustración y sus ideales de belleza", "La pasión y el sentimiento", "El exotismo y el lujo verbal", "La identidad nacional"], "Su rival en la literatura fue el Clasicismo."], ["t-rom-def", "En Hispanoamérica, el Romanticismo estuvo muy ligado a…", ["La independencia y la formación de identidades nacionales", "La Revolución Industrial europea", "La crítica al materialismo burgués", "El ocultismo y el esoterismo"], "Se unió a la realidad política: independencia, identidades, luchas por el poder y las fronteras."], ["t-rom-per", "La pasión amorosa individual, la expresión del “yo” y la descripción del paisaje caracterizan al…", ["Romanticismo sentimental (1860–1890)", "Romanticismo social (1830–1860)", "Modernismo preciosista", "Posmodernismo"], "El social mira al progreso y la identidad nacional."], ["t-rom-facundo", "Facundo, de Sarmiento, une…", ["Descripción geográfica, biografía y reflexión política", "Poesía gauchesca y canción popular", "Una historia de amor imposible", "Un cuento fantástico y ciencia"], "Es un ensayo: “Civilización y barbarie” (1845)."], ["t-rom-maria", "La posición social del narrador de María es…", ["Acomodada: estudió en Bogotá y vive en una hacienda con esclavos", "Pobre: trabaja de peón", "Es un gaucho reclutado", "Es un esclavo liberado"], "“los esclavos levantaron los manteles…”"], ["t-mod-def", "La ideología de fines del siglo XIX contra la que reaccionaron los modernistas se basaba en…", ["El progreso material ilimitado y el positivismo", "La monarquía y el pasado colonial", "La inspiración y el sentimiento", "El sencillismo y lo doméstico"], "Los artistas sentían que esa sociedad era materialista y descuidaba el espíritu y el arte."], ["t-mod-def", "¿En qué se diferencia el modernista del romántico al escribir?", ["El modernista pule cada palabra como un orfebre; el romántico escribe por inspiración espontánea", "El romántico pule cada palabra; el modernista escribe sin corregir", "Ninguno de los dos cuida la forma", "Los dos escriben solo ensayos"], "El Modernismo rechaza lo cursi y descuidado del Romanticismo, pero hereda su subjetividad."], ["t-mod-etapas", "La tensión entre cosmopolitismo y americanismo divide al Modernismo en…", ["Etapa preciosista y etapa mundonovista", "Romanticismo social y sentimental", "Parnasianismo y Simbolismo", "Sencillismo y erotismo"], "Preciosista: Azul (1888). Mundonovista: Cantos de vida y esperanza (1905)."], ["t-mod-lugones", "¿Por qué “Un fenómeno inexplicable” es un cuento modernista?", ["Trata lo extraño, lo oculto y el esoterismo", "Defiende al gaucho de la pampa", "Usa el sencillismo y la vida doméstica", "Cuenta la independencia argentina"], "Es de Las fuerzas extrañas (1906)."], ["t-mod-marti", "“Todo, como el diamante, / antes que luz es carbón” significa que…", ["La belleza nace de transformar algo humilde o doloroso", "Los diamantes valen más que el carbón", "El poeta trabajó en una mina", "La riqueza material es lo más importante"], "El sufrimiento es necesario para llegar a la plenitud."], ["t-mod-storni", "El tema de “Bien pudiera ser”, de Storni, es…", ["La opresión heredada de la mujer y su deseo de libertad", "La búsqueda de un amor pleno que disuelva el vacío", "El paso del tiempo y la juventud perdida", "El hombre americano y su tierra"], "La búsqueda de un amor pleno es el tema de “Un sol”."], ["t-mod-posmo", "¿Qué MANTIENE el Posmodernismo del Modernismo?", ["Lo extraño, lo enfermizo y el tema erótico (que amplifica)", "El exotismo", "El arte por el arte", "El lujo verbal"], "Abandona el exotismo, el arte por el arte y el lujo verbal."]], "pareo": {"topic": "t-rom-per", "pairs": [["Esteban Echeverría", "“El matadero”"], ["Domingo F. Sarmiento", "Facundo"], ["José Mármol", "Amalia"], ["Gertrudis Gómez de Avellaneda", "Sab"], ["Jorge Isaacs", "María"], ["José Martí", "Versos sencillos"], ["Rubén Darío", "Azul"], ["José Santos Chocano", "Alma América"], ["Amado Nervo", "La amada inmóvil"], ["Delmira Agustini", "Los cálices vacíos"]], "extra": ["Las fuerzas extrañas", "El dulce daño"], "topics": ["t-rom-per", "t-rom-per", "t-rom-per", "t-rom-per", "t-rom-maria", "t-mod-marti", "t-mod-etapas", "t-mod-chocano", "t-mod-etapas", "t-mod-agustini"]}, "vf": [["t-rom-def", "El Romanticismo llegó a Hispanoamérica antes que a Europa.", false, "Nació en Europa en la segunda mitad del s. XVIII y llegó a Hispanoamérica a inicios del s. XIX."], ["t-rom-fierro", "Martín Fierro está escrito en sextillas de versos octosílabos.", true, "Estrofas de 6 versos de 8 sílabas."], ["t-rom-maria", "En María, la naturaleza funciona como espejo de las emociones del narrador.", true, "María es el amor puro; la naturaleza refleja lo que siente el narrador."], ["t-mod-dario", "Rubén Darío pertenece solo a la etapa preciosista del Modernismo.", false, "Abarca las dos: preciosista (Azul) y mundonovista (Cantos de vida y esperanza)."], ["t-mod-rey", "El subtítulo “cuento alegre” de “El rey burgués” es irónico.", true, "La historia es trágica: el poeta muere congelado."], ["t-mod-lugones", "En “Un fenómeno inexplicable”, el narrador concluye que la sombra del mono era un espíritu.", false, "Comprueba con el papel y el lápiz que es una alucinación fija."], ["t-mod-posmo", "Los posmodernistas buscan una expresión simple y temas de la vida doméstica.", true, "Sencillismo, temas autóctonos y vida doméstica."], ["t-mod-chocano", "En el Tríptico criollo, el gaucho aparece elegante y lujoso, casi como una escultura.", false, "Ese es el charro. El gaucho aparece cansado y melancólico (“cansancio de la tierra”)."]], "mov": [["t-mod-storni", "“Yo necesito un sol que me disuelva” (Storni)", 2, ["Erotismo amplificado", "Exotismo", "Liberalismo político", "Correspondencia de las artes"], "Deseo con intensidad física: el Posmodernismo amplifica el erotismo."], ["t-rom-maria", "Su sonrisa “era la de una virgen de Rafael” (Isaacs)", 0, ["Idealización de la mujer", "Sencillismo", "Arte por el arte", "Crítica a la burguesía"], "La amada se compara con algo celestial: idealización romántica."], ["t-mod-rey", "“El arte no viste pantalones, ni habla en burgués” (Darío)", 1, ["Rechazo al materialismo burgués (arte por el arte)", "Idealización de la naturaleza", "Vida doméstica", "Identidad nacional"], "El arte es libre y no se somete a la burguesía."], ["t-rom-facundo", "“La República Argentina es una e indivisible” (Sarmiento)", 0, ["Identidad nacional", "Exotismo", "Erotismo", "Perfección formal"], "Romanticismo social: progreso e identidad nacional."], ["t-mod-storni", "“de familia en familia, de mujer en mujer” (Storni)", 2, ["Vida doméstica y familiar", "Exotismo", "Liberalismo político", "Renovación métrica"], "Relaciones familiares entre mujeres: rasgo posmodernista."], ["t-mod-def", "Un poema con motivos de China, Japón y la Grecia antigua, lleno de palabras raras pero musicales", 1, ["Exotismo", "Sencillismo", "Naturaleza americana", "Irracionalismo"], "Culturas lejanas y pasado remoto: exotismo modernista."]], "met": [["t-mod-agustini", "“Alma que… / Alma que…”, repetido al inicio de los versos, es una…", ["Anáfora", "Paralelismo", "Símil", "Hipérbole"], "Crea un efecto de letanía o confesión."], ["t-mod-agustini", "“que puede ser una amapola / que puede ser un lirio” es un…", ["Paralelismo", "Símil", "Anáfora", "Hipérbaton"], "Repite la misma estructura."], ["t-mod-agustini", "“como en el oro de un panal mordiera” es un…", ["Símil", "Metáfora", "Personificación", "Paralelismo"], "Comparación con “como”."], ["t-mod-metrica", "“Bien pudiera ser” tiene 14 versos (2 cuartetos y 2 tercetos) de 14 sílabas. Es un…", ["Soneto en alejandrinos", "Soneto en endecasílabos", "Romance en octosílabos", "Poema en verso libre"], "Soneto = 14 versos; alejandrino = 14 sílabas."], ["t-mod-dario", "“Juventud, divino tesoro, ¡ya te vas para no volver!”, que se repite en el poema de Darío, es el…", ["Estribillo", "Tópico", "Símil", "Terceto"], "El tópico es el tema: el paso del tiempo y la juventud perdida."], ["t-mod-metrica", "Al contar sílabas, si el verso termina en palabra aguda…", ["Se suma 1", "Se resta 1", "Se queda igual", "Se suman 2"], "Si termina en esdrújula, se resta 1."]], "casos": [["Caso A · Bebidas energizantes y sueño", "Un grupo de nutricionistas quiere saber si el consumo de bebidas energizantes se relaciona con las horas de sueño de los estudiantes de undécimo y duodécimo grado de tres colegios de La Chorrera. Aplican un cuestionario a 180 estudiantes, registran cuántas latas consumen por semana y cuántas horas duermen, y calculan promedios y porcentajes.", 1, 2, 0, "Cuestionario a estudiantes reales → de campo. “Se relaciona con” → correlacional. Latas, horas, promedios y porcentajes → cuantitativa.", "Analizar la relación entre el consumo semanal de bebidas energizantes y las horas de sueño de los estudiantes de undécimo y duodécimo grado de tres colegios de La Chorrera.", ["Identificar la cantidad de bebidas energizantes que consumen por semana los estudiantes de los tres colegios.", "Comparar las horas de sueño de los estudiantes según su nivel de consumo de bebidas energizantes.", "Establecer si existe relación entre el consumo semanal de bebidas energizantes y las horas de sueño de los estudiantes."]], ["Caso B · La llegada de la televisión", "Historiadores quieren explorar cómo se vivió la llegada de la televisión a Panamá. No existen estudios previos sobre el tema. Revisan periódicos, revistas y anuncios publicados entre 1960 y 1970, no entrevistan a nadie y organizan los temas que más se repiten y las opiniones de la época.", 0, 0, 1, "Periódicos, revistas y anuncios ya publicados; no entrevistan → documental. “Explorar” y “no existen estudios previos” → exploratoria. Temas y opiniones, sin números → cualitativa.", "Explorar cómo se vivió la llegada de la televisión a Panamá según la prensa publicada entre 1960 y 1970.", ["Identificar los temas sobre la televisión que más aparecen en los periódicos, revistas y anuncios de 1960 a 1970.", "Comparar las opiniones sobre la televisión publicadas al inicio y al final de la década.", "Interpretar cómo se vivió la llegada de la televisión a partir de los temas y las opiniones encontrados."]]], "rub_caso": ["El objetivo general usa un verbo que corresponde a la profundidad (tabla de verbos)", "El general tiene un solo verbo en infinitivo e incluye las variables, la población y el lugar o período", "El específico 1 es de descripción (identificar, describir, reconocer…)", "El específico 2 es de comparación (comparar, relacionar, contrastar…)", "El específico 3 es de conclusión (establecer, determinar, interpretar…) y los tres son metas, no actividades"], "des": [["t-mod-posmo", "Compara el Modernismo y el Posmodernismo: escribe una semejanza y dos diferencias.", "<p><b>Semejanza:</b> los dos gustan de lo extraño y lo enfermizo, y tratan el tema erótico (el Posmodernismo lo amplifica, sobre todo en las mujeres).</p><p><b>Diferencias:</b> el Modernismo busca el exotismo y lo cosmopolita; el Posmodernismo prefiere temas autóctonos, del interior del país y la vida doméstica. El Modernismo cultiva el arte por el arte y el lujo verbal (trabajo de orfebre); el Posmodernismo busca el sencillismo, una expresión simple y directa.</p>", [[1, "Una semejanza correcta (lo extraño/enfermizo o el erotismo)"], [2, "Primera diferencia bien explicada (por ejemplo, exotismo ↔ temas autóctonos y vida doméstica)"], [2, "Segunda diferencia bien explicada (por ejemplo, lujo verbal y arte por el arte ↔ sencillismo)"]]], ["t-mod-rey", "¿Por qué “El rey burgués” es un cuento modernista? Explícalo con un ejemplo del texto.", "<p>Es una <b>protesta contra la sociedad burguesa</b> y su materialismo: el rey ve el arte como un lujo más, como sus pájaros, y deja morir al poeta dando vueltas a un manubrio. Defiende el <b>arte por el arte</b> y la libertad creativa (“El arte no viste pantalones, ni habla en burgués”). También tiene el <b>exotismo</b> del palacio (cisnes, jarrones chinos, mármoles griegos). Es de <i>Azul</i> (1888), etapa <b>preciosista</b>.</p>", [[2, "Dice que critica a la sociedad burguesa o su materialismo / defiende el arte por el arte"], [1, "Menciona el exotismo o el lujo del palacio"], [1, "Da un ejemplo o cita del texto (el manubrio, los pájaros abrigados, “El arte no viste pantalones…”)"], [1, "Lo ubica en la etapa preciosista (Azul, 1888)"]]]]};
+var SIM_MOVS = ["Romanticismo", "Modernismo", "Posmodernismo"];
+function initSim(){
+  var box = $("#sim"), A, done, t0, timer = 0, order;
+  S.sim = S.sim || {};
+  function topicLink(id){ var s = document.getElementById(id); if (!s) return ""; var tt = s.dataset.title || id; if (/^t-rom-/.test(id) && !/Romant/.test(tt)) tt = "Romanticismo · " + tt; if (/^t-inv-/.test(id)) tt = "Investigación · " + tt; return '<a href="#lit" data-go="' + id + '">' + esc(tt) + '</a>'; }
+  function btns(key, labels, row){
+    var idx = labels.map(function(_, i){ return i; }); if (!row) idx = shuffle(idx);
+    return '<div class="sim-opts' + (row ? ' row' : '') + '" data-q="' + key + '">' + idx.map(function(i){ return '<button type="button" class="sim-o" data-v="' + i + '" aria-pressed="false">' + esc(labels[i]) + '</button>'; }).join("") + '</div>';
+  }
+  function render(){
+    A = {}; done = false; t0 = null; clearInterval(timer); $("#simClock").textContent = "60:00"; $("#simClock").classList.remove("over");
+    var h = '<div class="sim">';
+    h += '<section class="sim-sec"><h3>I. Selección única <span>12 × 2 = 24 pts</span></h3><p class="sim-ins">Elige la respuesta correcta.</p>';
+    SIM.mc.forEach(function(q, i){ h += '<div class="sq" data-sq="mc-' + i + '"><p class="sq-q">' + (i + 1) + '. ' + esc(q[1]) + '</p>' + btns("mc-" + i, q[2]) + '<div class="sim-x"></div></div>'; });
+    h += '</section>';
+    var obras = shuffle(SIM.pareo.pairs.map(function(p){ return p[1]; }).concat(SIM.pareo.extra));
+    h += '<section class="sim-sec"><h3>II. Pareo: autor y obra <span>10 × 1 = 10 pts</span></h3><p class="sim-ins">Escoge la obra de cada autor. Sobran dos obras.</p><div class="sim-pareo">';
+    SIM.pareo.pairs.forEach(function(p, i){ h += '<span>' + (i + 1) + '. ' + esc(p[0]) + '</span><select data-q="pa-' + i + '" aria-label="Obra de ' + esc(p[0]) + '"><option value="">—</option>' + obras.map(function(o){ return '<option>' + esc(o) + '</option>'; }).join("") + '</select>'; });
+    h += '</div><div class="sim-x" id="simPaX"></div></section>';
+    h += '<section class="sim-sec"><h3>III. Verdadero o falso <span>8 × 2 = 16 pts</span></h3><p class="sim-ins">Si es falso, piensa cómo lo corregirías: al corregir verás la corrección.</p>';
+    SIM.vf.forEach(function(q, i){ h += '<div class="sq" data-sq="vf-' + i + '"><p class="sq-q">' + (i + 1) + '. ' + esc(q[1]) + '</p>' + btns("vf-" + i, ["Verdadero", "Falso"], true) + '<div class="sim-x"></div></div>'; });
+    h += '</section>';
+    h += '<section class="sim-sec"><h3>IV. ¿De qué movimiento es y qué rasgo muestra? <span>6 × 2 = 12 pts</span></h3><p class="sim-ins">1 punto por el movimiento y 1 por el rasgo.</p>';
+    SIM.mov.forEach(function(q, i){ h += '<div class="sq" data-sq="mo-' + i + '"><p class="sq-q">' + (i + 1) + '. <i>' + esc(q[1]) + '</i></p><div class="sim-sub">Movimiento</div>' + btns("mo-" + i, SIM_MOVS, true) + '<div class="sim-sub">Rasgo</div>' + btns("ra-" + i, q[3]) + '<div class="sim-x"></div></div>'; });
+    h += '</section>';
+    h += '<section class="sim-sec"><h3>V. Métrica y figuras <span>6 × 2 = 12 pts</span></h3>';
+    SIM.met.forEach(function(q, i){ h += '<div class="sq" data-sq="me-' + i + '"><p class="sq-q">' + (i + 1) + '. ' + esc(q[1]) + '</p>' + btns("me-" + i, q[2]) + '<div class="sim-x"></div></div>'; });
+    h += '</section>';
+    h += '<section class="sim-sec"><h3>VI. Casos de investigación <span>2 × 8 = 16 pts</span></h3><p class="sim-ins">Clasifica cada caso en los 3 ejes (3 pts, se corrige solo) y redacta el objetivo general y los 3 específicos (5 pts, te corriges tú con la lista).</p>';
+    SIM.casos.forEach(function(c, i){
+      h += '<div class="sq sim-caso" data-sq="ca-' + i + '"><p class="sq-q">' + esc(c[0]) + '</p><p class="cs-t">' + esc(c[1]) + '</p>' +
+        '<div class="sim-sub">Fuente</div>' + btns("cf-" + i, CF, true) + '<div class="sim-sub">Profundidad</div>' + btns("cp-" + i, CP, true) + '<div class="sim-sub">Enfoque</div>' + btns("ce-" + i, CE, true) +
+        '<div class="sim-x"></div>' +
+        '<label class="sim-lab" for="simG' + i + '">Objetivo general</label><textarea id="simG' + i + '" rows="2"></textarea>' +
+        '<label class="sim-lab" for="simE' + i + '">Objetivos específicos (los 3, en orden)</label><textarea id="simE' + i + '" rows="4"></textarea>' +
+        '<div class="sim-model"><p><b>Modelo · general:</b> ' + esc(c[6]) + '</p><b>Específicos:</b><ol>' + c[7].map(function(o){ return '<li>' + esc(o) + '</li>'; }).join("") + '</ol></div>' +
+        '<div class="sim-rub"><b>Corrígete (1 punto cada una que cumplas)</b>' + SIM.rub_caso.map(function(r){ return '<label><input type="checkbox" data-sp="1"> ' + esc(r) + '</label>'; }).join("") + '</div></div>';
+    });
+    h += '</section>';
+    h += '<section class="sim-sec"><h3>VII. Desarrollo <span>2 × 5 = 10 pts</span></h3><p class="sim-ins">Responde con tus palabras. Al corregir verás una respuesta modelo y la lista para calificarte.</p>';
+    SIM.des.forEach(function(d, i){
+      h += '<div class="sq" data-sq="de-' + i + '"><p class="sq-q">' + (i + 1) + '. ' + esc(d[1]) + '</p><textarea aria-label="Respuesta de desarrollo ' + (i + 1) + '" rows="5"></textarea>' +
+        '<div class="sim-model">' + d[2] + '</div><div class="sim-rub"><b>Corrígete</b>' + d[3].map(function(r){ return '<label><input type="checkbox" data-sp="' + r[0] + '"> ' + esc(r[1]) + ' <span class="score">(' + r[0] + ' pt' + (r[0] > 1 ? 's' : '') + ')</span></label>'; }).join("") + '</div></div>';
+    });
+    h += '</section>';
+    h += '<section class="sim-sec sim-res" id="simRes"></section></div>';
+    box.innerHTML = h;
+    status();
+  }
+  function startClock(){
+    if (t0) return; t0 = Date.now();
+    timer = setInterval(function(){
+      var left = 3600 - Math.floor((Date.now() - t0) / 1000), c = $("#simClock");
+      if (left <= 0) { c.textContent = "Se acabó el tiempo"; c.classList.add("over"); clearInterval(timer); return; }
+      c.textContent = String(Math.floor(left / 60)).padStart(2, "0") + ":" + String(left % 60).padStart(2, "0");
+    }, 1000);
+  }
+  function answered(){ var n = Object.keys(A).length; return n; }
+  function status(){
+    var total = SIM.mc.length + SIM.pareo.pairs.length + SIM.vf.length + SIM.mov.length * 2 + SIM.met.length + SIM.casos.length * 3;
+    $("#simSt").innerHTML = done ? scoreLine() : "Respondidas <b>" + answered() + " / " + total + "</b> de las preguntas que se corrigen solas" + (S.sim.best != null ? " · tu mejor nota: <b>" + S.sim.best + " / 100</b>" : "");
+  }
+  function nota(p){ return (1 + 4 * p / 100).toFixed(1); }
+  function scoreLine(){ var p = points(); return "Nota: <b>" + p.total + " / 100</b> · ≈ <b>" + nota(p.total) + "</b> en escala de 1 a 5"; }
+  var auto = null;
+  function points(){
+    var self = 0; $$('.sim-rub input[data-sp]', box).forEach(function(cb){ if (cb.checked) self += +cb.dataset.sp; });
+    return { auto: auto.pts, self: self, total: auto.pts + self };
+  }
+  function grade(){
+    var pts = 0, parts = {mc:0, pa:0, vf:0, mo:0, me:0, ca:0}, miss = {};
+    function mark(key, right){
+      var g = $('[data-q="' + key + '"]', box), sel = A[key];
+      $$(".sim-o", g).forEach(function(b){ var v = +b.dataset.v; if (v === right) b.classList.add("right"); else if (v === sel) b.classList.add("wrong"); });
+      return sel === right;
+    }
+    function sq(key, ok, topic, text){ var el = $('[data-sq="' + key + '"]', box); el.classList.add(ok ? "ok" : "bad"); $(".sim-x", el).innerHTML = text + (ok ? "" : " · Repasa: " + topicLink(topic)); if (!ok) miss[topic] = 1; }
+    SIM.mc.forEach(function(q, i){ var ok = mark("mc-" + i, 0); if (ok) { pts += 2; parts.mc += 2; } sq("mc-" + i, ok, q[0], esc(q[3])); });
+    var paBad = [];
+    SIM.pareo.pairs.forEach(function(p, i){
+      var s = $('[data-q="pa-' + i + '"]', box), ok = s.value === p[1]; s.disabled = true; s.classList.add(ok ? "right" : "wrong");
+      if (ok) { pts += 1; parts.pa += 1; } else { paBad.push(esc(p[0]) + " → " + esc(p[1])); miss[SIM.pareo.topics[i]] = 1; }
+    });
+    $("#simPaX").innerHTML = paBad.length ? "Correctas: " + paBad.join(" · ") : "✓ Todo el pareo bien.";
+    SIM.vf.forEach(function(q, i){ var ok = mark("vf-" + i, q[2] ? 0 : 1); if (ok) { pts += 2; parts.vf += 2; } sq("vf-" + i, ok, q[0], (q[2] ? "<b>Verdadero.</b> " : "<b>Falso.</b> ") + esc(q[3])); });
+    SIM.mov.forEach(function(q, i){ var a = mark("mo-" + i, q[2]), b = mark("ra-" + i, 0); var p = (a ? 1 : 0) + (b ? 1 : 0); pts += p; parts.mo += p; sq("mo-" + i, a && b, q[0], "<b>" + SIM_MOVS[q[2]] + " · " + esc(q[3][0]) + ".</b> " + esc(q[4])); });
+    SIM.met.forEach(function(q, i){ var ok = mark("me-" + i, 0); if (ok) { pts += 2; parts.me += 2; } sq("me-" + i, ok, q[0], esc(q[3])); });
+    SIM.casos.forEach(function(c, i){ var p = (mark("cf-" + i, c[2]) ? 1 : 0) + (mark("cp-" + i, c[3]) ? 1 : 0) + (mark("ce-" + i, c[4]) ? 1 : 0); pts += p; parts.ca += p; sq("ca-" + i, p === 3, "t-inv-ejes", "<b>" + CF[c[2]] + " · " + CP[c[3]] + " · " + CE[c[4]] + ".</b> " + esc(c[5])); });
+    auto = { pts: pts, parts: parts, miss: miss };
+  }
+  function results(){
+    var p = points(), pa = auto.parts, rub = 0;
+    $$('.sim-caso .sim-rub input:checked', box).forEach(function(cb){ rub += +cb.dataset.sp; });
+    var ks = Object.keys(auto.miss);
+    $("#simRes").innerHTML = '<h3>Resultado</h3><div class="sim-big">' + p.total + ' / 100</div><p style="margin:4px 0 0">≈ <b>' + nota(p.total) + '</b> en escala de 1 a 5 (' + p.auto + ' automáticos + ' + p.self + ' que te calificaste tú).</p>' +
+      '<div class="sim-parts"><div>Selección<b>' + pa.mc + ' / 24</b></div><div>Pareo<b>' + pa.pa + ' / 10</b></div><div>V o F<b>' + pa.vf + ' / 16</b></div><div>Movimiento y rasgo<b>' + pa.mo + ' / 12</b></div><div>Métrica y figuras<b>' + pa.me + ' / 12</b></div><div>Casos<b>' + (pa.ca + rub) + ' / 16</b></div><div>Desarrollo<b>' + (p.self - rub) + ' / 10</b></div></div>' +
+      (ks.length ? '<b>Repasa estos temas:</b><ul>' + ks.map(function(k){ return '<li>' + topicLink(k) + '</li>'; }).join("") + '</ul>' : '<p><b>No fallaste ninguna de las automáticas.</b></p>') +
+      '<p class="score" style="margin-top:10px">Marca las listas de “Corrígete” de los casos y del desarrollo para completar la nota.</p>';
+    S.sim.last = p.total; S.sim.best = Math.max(S.sim.best || 0, p.total); save(); status();
+  }
+  box.addEventListener("click", function(e){
+    var b = e.target.closest(".sim-o"); if (!b || done) return;
+    var g = b.parentNode; startClock();
+    $$(".sim-o", g).forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+    A[g.dataset.q] = +b.dataset.v; status();
+  });
+  box.addEventListener("change", function(e){
+    var s = e.target;
+    if (s.matches("select[data-q]")) { startClock(); if (s.value) A[s.dataset.q] = s.value; else delete A[s.dataset.q]; status(); }
+    if (s.matches("input[data-sp]") && done) results();
+  });
+  box.addEventListener("input", function(e){ if (e.target.matches("textarea")) startClock(); });
+  $("#simGo").onclick = function(){
+    if (done) return;
+    if (answered() < 20 && !confirm("Todavía te faltan muchas preguntas. ¿Corregir de todas formas?")) return;
+    done = true; clearInterval(timer); $(".sim", box).classList.add("done");
+    $$("textarea", box).forEach(function(t){ t.readOnly = true; });
+    grade(); results(); $("#simRes").scrollIntoView({behavior:"smooth", block:"start"});
+  };
+  $("#simNew").onclick = function(){ if (!done && answered() && !confirm("¿Borrar lo que llevas y empezar de nuevo?")) return; render(); window.scrollTo(0, $("#p-lit-simulacro").offsetTop - 80); };
+  render();
+}
+
 /* ---------- palacio de memoria (lit) ---------- */
 function initPalacio(){
   var box = $("#pal"), pane = $("#p-lit-palacio");
@@ -6057,7 +6246,7 @@ var PLAN = [
   [new Date(2026,9,3), "Sáb", [["bio","Músculo-esquelético: fibra, contracción, organización y funciones","b2"],["bio","Esqueleto: bursa, divisiones, tipos de hueso, afecciones","b3"],["bio","Localizar: las 4 figuras en Estudiar y luego en Examen","b4"],["log","Lógica: el juicio (estructura, clasificación, A·E·I·O)","l1"]]],
   [new Date(2026,9,4), "Dom", [["bio","Nervioso: neurona, gradiente iónico, sinapsis","b5"],["bio","SNC, encéfalo, cerebro, cerebelo, tronco, límbico, médula, SNP","b6"],["bio","Drogas · quiz de Nervioso","b7"],["log","Lógica: cuadro de oposición con la herramienta interactiva","l2"]]],
   [new Date(2026,9,5), "Lun", [["log","Lógica: razonamiento, silogismo, validez","l3"],["log","Lógica: hacer los 2 talleres resueltos sin mirar + quiz","l4"],["bio","Quiz de Biología · Todas","b8"],["bio","Tarjetas marcadas “repasar” y Localizar en modo examen","b9"],["bio","Parciales anteriores 1 y 3: hacerlos sin mirar las respuestas","b11"],["bio","Enfermedades neurodegenerativas (la hoja de la profe)","b12"],["lit","Literatura: Romanticismo (teoría + María, Martín Fierro, Facundo)","t1"]]],
-  [new Date(2026,9,6), "Mar", [["log","Antes de Lógica: tabla de inferencias del cuadro y reglas del silogismo","l5"],["bio","Entre exámenes: solo los cuadros “Lo que más cae” de Biología","b10"],["lit","Tarde: Modernismo y Posmodernismo (rasgos, etapas, generaciones)","t2"],["lit","Las 7 lecturas modernistas y posmodernistas + métrica y figuras","t6"],["lit","Palacio de memoria: un recorrido leyendo y otro sin mirar","t7"],["lit","Casos de investigación: clasificar y redactar objetivos sin mirar","t3"],["lit","Noche: quiz de Literatura · Todas","t4"]], ["log","bio"]],
+  [new Date(2026,9,6), "Mar", [["log","Antes de Lógica: tabla de inferencias del cuadro y reglas del silogismo","l5"],["bio","Entre exámenes: solo los cuadros “Lo que más cae” de Biología","b10"],["lit","Tarde: Modernismo y Posmodernismo (rasgos, etapas, generaciones)","t2"],["lit","Las 7 lecturas modernistas y posmodernistas + métrica y figuras","t6"],["lit","Palacio de memoria: un recorrido leyendo y otro sin mirar","t7"],["lit","Simulacro de examen de Literatura: 60 min, sin mirar","t8"],["lit","Casos de investigación: clasificar y redactar objetivos sin mirar","t3"],["lit","Noche: quiz de Literatura · Todas","t4"]], ["log","bio"]],
   [new Date(2026,9,7), "Mié", [["lit","Antes de Literatura: recorrido mental del palacio + “Lo que más cae” + tabla de verbos","t5"],["fis","Física · Kirchhoff: resumen + práctica (10) + bimestral 1–5","f1"],["fis","Física · RC: resumen, guía y bimestral 6–14","f2"],["fis","Física · RC: práctica de 11 (los transitorios P8–P11 primero)","f3"],["fis","Física · Magnetismo: resumen + mano derecha 3D + bimestral 15–22","f4"]], ["lit"]],
   [new Date(2026,9,8), "Jue", [["fis","Antes de Física: formulario completo y 5 preguntas de la mano derecha","f5"]], ["fis"]]
 ];
@@ -6153,7 +6342,7 @@ function renderAllPlans(){
 
 /* ---------- init ---------- */
 buildToc("rel"); buildToc("lit"); buildToc("fis"); buildToc("bio"); buildToc("log"); syncDone(); countdown();
-makeFlash("rel"); makeFlash("bio"); makeFlash("log"); makeFlash("lit"); makeFlash("fis"); makeQuiz("rel"); makeQuiz("bio"); makeQuiz("log"); makeQuiz("lit"); makeQuiz("fis"); renderCasos(); initProblems(); RH.init(); initParciales(); initPalacio(); renderCQ(); newCD(); renderTalleres(); makeMisa(); renderLoc();
+makeFlash("rel"); makeFlash("bio"); makeFlash("log"); makeFlash("lit"); makeFlash("fis"); makeQuiz("rel"); makeQuiz("bio"); makeQuiz("log"); makeQuiz("lit"); makeQuiz("fis"); renderCasos(); initProblems(); RH.init(); initParciales(); initPalacio(); initSim(); renderCQ(); newCD(); renderTalleres(); makeMisa(); renderLoc();
 renderAllPlans();
 if (!location.hash && S.last) { try { history.replaceState(null, "", "#" + S.last); } catch(e){} }
 route();
